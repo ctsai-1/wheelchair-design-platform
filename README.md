@@ -1,5 +1,7 @@
 # A rocket Wheelchair
 
+by Dario Samira and Chung
+
 by Dario, Samira and Chung
 Wheelchair Design Platform is a repository that contains some resources to help
 designers and developers speak the same language, and work together towards

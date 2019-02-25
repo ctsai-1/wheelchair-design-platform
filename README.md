@@ -1,8 +1,7 @@
-# A rocket Wheelchair
-
-by Dario Samira and Chung
+# A Noisy Wheelchair
 
 by Dario, Samira and Chung
+sdf
 Wheelchair Design Platform is a repository that contains some resources to help
 designers and developers speak the same language, and work together towards
 addressing relevant challenges for wheelchair users. It is a collection of

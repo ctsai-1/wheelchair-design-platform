@@ -27,7 +27,8 @@ my_thing.read()
 
 # Start reading the serial port
 ser = serial.Serial(
-    port = os.environ['SERIAL'],
+    port="dev/ttyACM0",
+    # port = os.environ['SERIAL'],
     baudrate = 9600,
     timeout = 2)
 

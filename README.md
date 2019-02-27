@@ -2,6 +2,13 @@
 
 by Dario, Samira and Chung
 sdf
+
+project description: The EDU wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not.
+As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
+Each wheelchair is equipped with heart rate sensor to detect the mood state of the visitor throughout the visiting experience and pressure sensors on the back of the chair to register when the visitor is bored or interested to the exhibition contents.
+The data collected by the devices, will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
+
+
 Wheelchair Design Platform is a repository that contains some resources to help
 designers and developers speak the same language, and work together towards
 addressing relevant challenges for wheelchair users. It is a collection of

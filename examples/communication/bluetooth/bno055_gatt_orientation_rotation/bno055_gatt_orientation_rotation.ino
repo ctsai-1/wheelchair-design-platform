@@ -113,7 +113,7 @@ void setup(void) {
   ble.verbose(true);
 
   // Change the device name to fit its purpose
-  if (! ble.sendCommandCheckOK(F("AT+GAPDEVNAME=Noisy Left Wheel")) ) {
+  if (! ble.sendCommandCheckOK(F("AT+GAPDEVNAME=EDUchair")) ) {
     error(F("Could not set device name."));
   }
 

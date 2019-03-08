@@ -1,3 +1,5 @@
+#include <Adafruit_Sensor.h>
+
 /*********************************************************************
  This is an example for our nRF51822 based Bluefruit LE modules
 

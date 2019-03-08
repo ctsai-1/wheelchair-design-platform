@@ -12,11 +12,22 @@ The data collected by the devices, will be used either by the museum to improve 
 # List of sensors:
 -	GPS sensor (beacon for indoor use) tracks the position of the user in the space
 -	Gyroscope knows the orientation of the wheelchair
--	Neopixel leds can replace a display interface and simulate a smart compass based on the info from GPS sensor and Gyroscope
 -	(2) pressure sensor, placed on the back of the chair can recognize relaxed or interested posture
 -	Heart rate sensor can detect the “emotional” reaction of a person to a work of art.
-
+- Proximity sensor can detect when the wheelchair is too close to an obstacle, like an artiwork, preventing damages
+- Clock sensor to register how much time a visitor spends in front of a specific artwork and in general inside the museum
+#List of actuators:
+- Neopixel leds can replace a display interface and simulate a smart compass based on the info from GPS sensor and Gyroscope
+- Speaker to reproduce the guided tour according to the position of the wheelchair
+- Buttons to call for help and to control the reproduction of the guided tour
 # We are not sure if the sensors we identified are the ones needed for the implementation of our idea so we would like to discuss that with you before buying unnecessary components.
+
+#orientation sensor experiment (picture in slack)
+We started from reviewing workshop 2 and tried to connect the sensor and the raspberry via Bluetooth. We encountered many problems in connecting the devices, and we reinstalled the raspberry requirements after pulling the updated version of material from GitHub. We finally managed to run the code on raspberry and we felt more confident on the understanding of the lines needed to talk with raspberry, to achieve that and to navigate through the folders.
+Furthermore, we were able to send our values to the server and visualize them in grafana.
+We explored all the Arduino examples given for the orientation sensor and after, visualizing the sensor behaviour in the serial plotter, we chose which one was more appropriate for the function we needed:  identifying the direction of the wheelchair on 1 axis.
+On grafana we found out that the curves in the graphs show the different orientation of the wheelchair. From the starting position, if the user turns left the sensor will register an increase in the value. While if the user turns right there is a decrease in the value.
+The peaks of the curves represent a completed rotation.
 
 
 Wheelchair Design Platform is a repository that contains some resources to help

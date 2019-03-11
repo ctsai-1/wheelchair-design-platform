@@ -62,19 +62,19 @@ def handle_rotation_data(handle, value_bytes):
         ser.write('1'.encode())
         time.sleep(2)
         ser.write('0'.encode())
-        global vib
-        #print("not vib yet %s" % str(vib))
-        #vib = True
-        #print("after nudge %s" % str(vib))
+        # global vib
+        # print("not vib yet %s" % str(vib))
+        # vib = True
+        # print("after nudge %s" % str(vib))
 
     if ((rotation_values[1] % ROTVAL == 0) and not vib:
         ser.write('1'.encode())
         time.sleep(2)
         ser.write('0'.encode())
-        global vib
-        #print("not vib yet %s" % str(vib))
-        #vib = True
-        #print("after nudge %s" % str(vib))
+        # global vib
+        # print("not vib yet %s" % str(vib))
+        # vib = True
+        # print("after nudge %s" % str(vib))
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""

@@ -28,7 +28,7 @@ GATT_CHARACTERISTIC_ROTATION = "02118733-4455-6677-8899-AABBCCDDEEFF"
 ADDRESS_TYPE = pygatt.BLEAddressType.random
 
 # Recommended number of rotation
-ROTVAL = 2
+ROTVAL = 10
 # Did we already vib
 vib = False
 

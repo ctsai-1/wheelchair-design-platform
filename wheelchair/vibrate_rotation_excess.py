@@ -62,9 +62,9 @@ def handle_rotation_data(handle, value_bytes):
         time.sleep(2)
         ser.write('0'. encode())
         global nudged
-        print("not nudged yet" + nudged)
+        print("not nudged yet" + str(nudged))
         nudged = True
-        print("after nudge" + nudged)
+        print("after nudge" + str(nudged))
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""

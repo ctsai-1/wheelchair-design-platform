@@ -32,8 +32,6 @@ RECOMMENDED_NUM_ROTATION = 2
 # Did we already nudged
 nudged = False
 
-rotation_values = 0
-
 # Start reading the serial port
 ser = serial.Serial(
     port = os.environ['SERIAL'],
@@ -55,6 +53,7 @@ def handle_rotation_data(handle, value_bytes):
     value_bytes -- bytearray, the data returned in the notification
     """
     print("Received data: %s (handle %d)" % (str(value_bytes), handle))
+    rotation_values[0] = 0
     rotation_values = [float(x) for x in value_bytes.decode('utf-8').split(",")]
     find_or_create("Left Wheel Rotation",
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)

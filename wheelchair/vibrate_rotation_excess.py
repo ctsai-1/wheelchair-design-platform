@@ -28,9 +28,9 @@ GATT_CHARACTERISTIC_ROTATION = "02118733-4455-6677-8899-AABBCCDDEEFF"
 ADDRESS_TYPE = pygatt.BLEAddressType.random
 
 # Recommended number of rotation
-RECOMMENDED_NUM_ROTATION = 2
-# Did we already nudged
-nudged = False
+ROTVAL = 2
+# Did we already vib
+vib = False
 
 # Start reading the serial port
 ser = serial.Serial(
@@ -58,14 +58,14 @@ def handle_rotation_data(handle, value_bytes):
     find_or_create("Left Wheel Rotation",
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
 
-    if rotation_values[0] % RECOMMENDED_NUM_ROTATION == 0 and not nudged:
+    if ((rotation_values[0] or rotation_values[1]) % ROTVAL == 0) and not vib:
         ser.write('1'.encode())
         time.sleep(2)
         ser.write('0'.encode())
-        global nudged
-        print("not nudged yet %s" % str(nudged))
-        nudged = True
-        print("after nudge %s" % str(nudged))
+        global vib
+        print("not vib yet %s" % str(vib))
+        vib = True
+        print("after nudge %s" % str(vib))
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""

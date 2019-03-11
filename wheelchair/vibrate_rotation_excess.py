@@ -58,6 +58,9 @@ def handle_rotation_data(handle, value_bytes):
     find_or_create("Left Wheel Rotation",
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
 
+    print(rotation_values[0])
+    print(rotation_values[1])
+
     if ((rotation_values[1] or rotation_values[0]) % ROTVAL == 0) and not vib:
         ser.write('1'.encode())
         time.sleep(2)

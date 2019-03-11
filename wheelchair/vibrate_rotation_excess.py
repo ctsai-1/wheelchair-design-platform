@@ -57,7 +57,7 @@ def handle_rotation_data(handle, value_bytes):
     find_or_create("Left Wheel Rotation",
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
 
-    if rotation_values[0] > RECOMMENDED_NUM_ROTATION and not nudged:
+    if rotation_values[0] % RECOMMENDED_NUM_ROTATION == 0 and not nudged:
         ser.write('1'.encode())
         time.sleep(2)
         ser.write('0'.encode())

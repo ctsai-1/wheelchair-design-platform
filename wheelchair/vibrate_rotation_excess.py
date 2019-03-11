@@ -32,6 +32,8 @@ RECOMMENDED_NUM_ROTATION = 2
 # Did we already nudged
 nudged = False
 
+rotation_values = 0
+
 # Start reading the serial port
 ser = serial.Serial(
     port = os.environ['SERIAL'],

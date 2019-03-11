@@ -54,7 +54,7 @@ def handle_rotation_data(handle, value_bytes):
     """
     print("Received data: %s (handle %d)" % (str(value_bytes), handle))
     #rotation_values = [0, 0]
-    rotation_values = [int(x) for x in value_bytes.decode('utf-8').split(",")]
+    rotation_values = [int((float(x)) for x in value_bytes.decode('utf-8').split(",")]
     find_or_create("Left Wheel Rotation",
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
 

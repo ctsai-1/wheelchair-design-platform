@@ -65,7 +65,7 @@ def handle_rotation_data(handle, value_bytes):
     ROTVAL_0 = 0
 
     if ((ROTVAL_0 - rotation_values[0]) > 1 ):
-        print("rotval0"")
+        print("rotval0")
         ser.write('1'.encode())
         ROTVAL_0 = rotation_values[0]
         time.sleep(2)

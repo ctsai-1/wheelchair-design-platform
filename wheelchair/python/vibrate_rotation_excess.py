@@ -28,7 +28,7 @@ GATT_CHARACTERISTIC_ROTATION = "02118733-4455-6677-8899-AABBCCDDEEFF"
 ADDRESS_TYPE = pygatt.BLEAddressType.random
 
 # Recommended number of rotation
-ROTVAL = 2
+ROTVAL = 1
 # Did we already vib
 vib = False
 
@@ -39,11 +39,11 @@ ser = serial.Serial(
     timeout = 2)
 
 
-def find_or_create(property_name, property_type):
+def find_or_create(property_name, property):
     """Search a property by name, create it if not found, then return it."""
     if my_thing.find_property_by_name(property_name) is None:
         my_thing.create_property(name=property_name,
-                                 property_type=property_type)
+                                 property=property)
     return my_thing.find_property_by_name(property_name)
 
 

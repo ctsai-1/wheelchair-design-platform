@@ -2,24 +2,38 @@
 // decreases to half speed before starting increasing  again
 
 // Lets make our vibration example, using PWM!
-#define VIB_PIN 10 // Careful, here we have to use a pin that can be used for pwm.
 
-int i = 127;       // Our counter for PWM, we declare it globally,
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+#include <Adafruit_NeoPixel.h>
+#define BNO055_SAMPLERATE_DELAY_MS (10)
+#define  PIN 6
+Adafruit_BNO055 bno = Adafruit_BNO055();
+
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(16, PIN, NEO_GRB + NEO_KHZ800);
+
+// int i = 127;       // Our counter for PWM, we declare it globally,
 // So it lasts for the duration of the entire program.
 // It starts in 127 since the vibration motor starts
 // working from around 2 volts (so we start at 2.5v)
 
-bool increase = true;
-bool vibration_enabled = false;
+bool led_increase = true;
+bool led_enabled = false;
+int counter = 0;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(VIB_PIN, OUTPUT);
   Serial.begin(9600);
+
+  strip.begin();
+  strip.setBrightness(30); //adjust brightness here
+  strip.show(); // Initialize all pixels to 'off'
 }
 
-void vibration_pattern() {
-  if (increase) {
+/*void led_pattern() {
+  if (led_increase) {
     i += 10; // incrementing the power of the vibration motor
   } else {
     i -= 10;
@@ -30,21 +44,24 @@ void vibration_pattern() {
   } else if ( i < 127) {
     increase = true;
   }
-}
+  }*/
 
 void loop() {
   char command = Serial.read();
   if (command == '1') {
-    Serial.println("Turning on Vibration...");
-    vibration_enabled = true;
+    Serial.println("Count rotation...");
+    counter = counter + 1;
+    led_enabled = true;
+
   } else if (command == '0') {
-    Serial.println("Turning off Vibration...");
-    vibration_enabled = false;
-    analogWrite(VIB_PIN, 0);
+    Serial.println("Don't count...");
+    led_enabled = false;
+    //analogWrite(VIB_PIN, 0);
   }
-  if (vibration_enabled) {
-    vibration_pattern();
-    analogWrite(VIB_PIN, i);
+  if (led_enabled) {
+    strip.setPixelColor(counter, 0, 0, 255);
+    strip.show();
+    delay(10);
   }
   delay(50);
 }

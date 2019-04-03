@@ -67,9 +67,9 @@ def handle_rotation_data(handle, value_bytes):
     print(rotation_values0)
 
     global prev_val
-    if (prev_val is not rotation_values0):
-        print("on")
-        ser.write('1'.encode())
+    # if (prev_val is not rotation_values0):
+        # print("on")
+        # ser.write('1'.encode())
     if (prev_val is rotation_values0):
         ser.write('0'.encode())
         print("off")

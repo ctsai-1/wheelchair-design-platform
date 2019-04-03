@@ -62,15 +62,15 @@ def handle_rotation_data(handle, value_bytes):
     print(rotation_values[1])
 
     if (rotation_values[0] % ROTVAL == 0) :
-        print ("1")
+        print ("1 AVANTI ")
         ser.write('1'.encode())
-        time.sleep(2)
+        #time.sleep(2)
         #ser.write('0'.encode())
 
     if (rotation_values[1] % ROTVAL == 0) :
         #ser.write('1'.encode())
-        time.sleep(2)
-        print ("2")
+        #time.sleep(2)
+        print ("2 INDIETRO")
         ser.write('0'.encode())
 
 #        global vib

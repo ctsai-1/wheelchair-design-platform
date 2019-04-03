@@ -30,7 +30,7 @@ ADDRESS_TYPE = pygatt.BLEAddressType.random
 # Recommended number of rotation
 #ROTVAL = 1
 # Did we already vib
-vib = False
+#vib = False
 
 # Start reading the serial port
 ser = serial.Serial(
@@ -67,17 +67,20 @@ def handle_rotation_data(handle, value_bytes):
     #ROTVAL_0 = 0
 
     ROTVAL_0 = rotation_values[0]
-    if ((rotation_values[0] - ROTVAL_0) > 1 ):
-        print("rotval0")
+    print(ROTVAL_0)
+    if ((rotation_values[0] - 1) = ROTVAL_0 ):
+        print("ROTVAL_0")
+        print (ROTVAL_0)
         ser.write('1'.encode())
-        ROTVAL_0 = rotation_values[0]
+        #ROTVAL_0 = rotation_values[0]
         time.sleep(2)
 
     ROTVAL_1 = rotation_values[1]
-    if ((rotation_values[1] - ROTVAL_1) > 1 ):
-        print("rotval1")
+    if ((rotation_values[1] - 1) = ROTVAL_1 ):
+        print("ROTVAL_1")
+        print (ROTVAL_1)
         ser.write('1'.encode())
-        ROTVAL_1 = rotation_values[1]
+        #ROTVAL_1 = rotation_values[1]
         time.sleep(2)
 
     #((rotation_values[1] or rotation_values[0]) % ROTVAL == 0) and not vib:

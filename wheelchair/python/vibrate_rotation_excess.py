@@ -61,21 +61,22 @@ def handle_rotation_data(handle, value_bytes):
 
     print(rotation_values[0])
     print(rotation_values[1])
-rotation_values0 = math.floor (rotation_values[0])
-print(rotation_values0)
+    rotation_values0 = math.floor(rotation_values[0])
+    print(rotation_values0)
 
-rotation_values1 = math.floor (rotation_values[1])
-print(rotation_values1)
-    if (rotation_values0 % ROTVAL == 0) :
-        print ("1 AVANTI ")
+    rotation_values1 = math.floor(rotation_values[1])
+    print(rotation_values1)
+
+    if ((rotation_values0 % ROTVAL) == 0):
+        print("1 AVANTI ")
         ser.write('1'.encode())
         #time.sleep(2)
         #ser.write('0'.encode())
 
-    if (rotation_values1 % ROTVAL == 0) :
+    if ((rotation_values1 % ROTVAL) == 0):
         #ser.write('1'.encode())
         #time.sleep(2)
-        print ("2 INDIETRO")
+        print("2 INDIETRO")
         ser.write('0'.encode())
 
 #        global vib

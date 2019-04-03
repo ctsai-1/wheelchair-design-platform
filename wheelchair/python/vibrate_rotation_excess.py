@@ -30,6 +30,7 @@ ADDRESS_TYPE = pygatt.BLEAddressType.random
 
 # Recommended number of rotation
 ROTVAL = 2
+prev_val = 0
 # Did we already vib
 #vib = False
 
@@ -65,20 +66,14 @@ def handle_rotation_data(handle, value_bytes):
     rotation_values0 = math.floor(rotation_values[0])
     print(rotation_values0)
 
-    rotation_values1 = math.floor(rotation_values[1])
-    print(rotation_values1)
-
-    if ((rotation_values0 % ROTVAL) == 0):
+    global prev_val
+    if (prev_val is not rotation_values0 and (rotation_values0 % ROTVAL) == 0):
         print("1 AVANTI ")
         ser.write('1'.encode())
         # time.sleep(2)
         ser.write('0'.encode())
 
-    if ((rotation_values1 % ROTVAL) == 0):
-        ser.write('1'.encode())
-        # time.sleep(2)
-        print("2 INDIETRO")
-        ser.write('0'.encode())
+    prev_val = rotation_values0
 
 #        global vib
 #        print("not vib yet %s" % str(vib))

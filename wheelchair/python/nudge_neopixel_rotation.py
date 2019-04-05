@@ -30,7 +30,7 @@ ADDRESS_TYPE = pygatt.BLEAddressType.random
 
 # Recommended number of rotation
 ROTVAL = 2
-prev_val = 0
+#prev_val = 0
 # Did we already vib
 #vib = False
 
@@ -65,6 +65,7 @@ def handle_rotation_data(handle, value_bytes):
 
     rotation_values0 = math.floor(rotation_values[0])
     print(rotation_values0)
+
 
     global prev_val
     print(prev_val)

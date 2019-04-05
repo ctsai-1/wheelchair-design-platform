@@ -71,7 +71,7 @@ def handle_rotation_data(handle, value_bytes):
         print("1 ON ")
         ser.write('1'.encode())
     prev_val = rotation_values0
-    #else:
+#else:
         #print("0 OFF ")
         #ser.write('0'.encode())
 #        global vib

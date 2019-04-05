@@ -43,7 +43,7 @@ imu::Vector<3> gravity_vector;          // for reading gravity vector values
 //int8_t temperature;                     // for reading temperature values (8 bytes)
 
 
-char orientation= "frame_orientation";
+char orientation= "frame_orientation-ab9e";
 // Arduino setup function (automatically called at startup)
 void setup(void)
 {
@@ -99,7 +99,7 @@ void loop(void)
   /* Display the floating point data */
   
   
-  Serial.print("frame_orientation");
+  Serial.print("frame_orientation-ab9e");
   Serial.print(",");
   Serial.print(euler_vector.x());
   Serial.print(",");

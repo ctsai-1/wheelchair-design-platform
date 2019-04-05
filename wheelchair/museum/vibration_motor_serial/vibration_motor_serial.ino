@@ -18,10 +18,11 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(16, PIN, NEO_GRB + NEO_KHZ800);
 // So it lasts for the duration of the entire program.
 // It starts in 127 since the vibration motor starts
 // working from around 2 volts (so we start at 2.5v)
-
-bool led_increase = true;
+int i;
+//bool led_increase = true;
 bool led_enabled = false;
-int counter = 0;
+//int counter = 0;
+int prevcommand = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -48,20 +49,21 @@ void setup() {
 
 void loop() {
   char command = Serial.read();
-  if (command == '1') {
-    Serial.println("Count rotation...");
-    counter = counter + 1;
+  if (command == '1' & =! prevcommand) {
+    i++;
     led_enabled = true;
-
-  } else if (command == '0') {
-    Serial.println("Don't count...");
+    prevcommand = command;
+  } else {
+    Serial.println(".....");
     led_enabled = false;
-    //analogWrite(VIB_PIN, 0);
   }
-  if (led_enabled) {
-    strip.setPixelColor(counter, 0, 0, 255);
+
+  if (led_enabled = true) {
+    strip.setPixelColor(i, 0, 0, 255);
     strip.show();
     delay(10);
+    led_enabled = false;
+
   }
   delay(50);
 }

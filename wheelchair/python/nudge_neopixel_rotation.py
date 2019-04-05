@@ -29,7 +29,7 @@ GATT_CHARACTERISTIC_ROTATION = "02118733-4455-6677-8899-AABBCCDDEEFF"
 ADDRESS_TYPE = pygatt.BLEAddressType.random
 
 # Recommended number of rotation
-ROTVAL = 2
+#ROTVAL = 2
 prev_val = 0
 # Did we already vib
 #vib = False
@@ -57,11 +57,12 @@ def handle_rotation_data(handle, value_bytes):
     print("Received data: %s (handle %d)" % (str(value_bytes), handle))
     #rotation_values = [0, 0]
     rotation_values = [float(x) for x in value_bytes.decode('utf-8').split(",")]
+    print("float data collected")
     find_or_create("Left Wheel Rotation",
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
-
+    print("values sent to the hub")
     print(rotation_values[0])
-    print(rotation_values[1])
+    #print(rotation_values[1])
 
     rotation_values0 = math.floor(rotation_values[0])
     print(rotation_values0)
@@ -74,7 +75,7 @@ def handle_rotation_data(handle, value_bytes):
         ser.write('1'.encode())
     else:
         print("0 OFF ")
-        ser.write('0'.encode())
+        #ser.write('0'.encode())
     prev_val = rotation_values0
     print(prev_val)
 #        global vib

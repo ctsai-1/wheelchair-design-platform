@@ -10,7 +10,6 @@ import signal  # To catch the Ctrl+C and end the program properly
 import os  # To access environment variables
 from dotenv import load_dotenv  # To load environment variables from .env file
 import serial
-import time
 import math
 
 # DCD Hub
@@ -25,11 +24,11 @@ BLUETOOTH_DEVICE_MAC = os.environ['BLUETOOTH_DEVICE_MAC']
 
 # UUID of the GATT characteristic to subscribe
 GATT_CHARACTERISTIC_ROTATION = "02118733-4455-6677-8899-AABBCCDDEEFF"
+GATT_CHARACTERISTIC_ORIENTATION = "02118833-4455-6677-8899-AABBCCDDEEFF"
 # Many devices, e.g. Fitbit, use random addressing, this is required to connect.
 ADDRESS_TYPE = pygatt.BLEAddressType.random
 
 # Recommended number of rotation
-#ROTVAL = 2
 prev_val = 0
 # Did we already vib
 #vib = False
@@ -78,16 +77,29 @@ def handle_rotation_data(handle, value_bytes):
         #ser.write('0'.encode())
     prev_val = rotation_values0
     print(prev_val)
-#        global vib
-#        print("not vib yet %s" % str(vib))
-#        vib = True
-#        print("after nudge %s" % str(vib))
+
+
+def handle_orientation_data(handle, value_bytes):
+    """
+    handle -- integer, characteristic read handle the data was received on
+    value_bytes -- bytearray, the data returned in the notification
+    """
+    print("Received data: %s (handle %d)" % (str(value_bytes), handle))
+    orientation_values = [float(x) for x in value_bytes.decode('utf-8').split(",")]
+    find_or_create("Left Wheel Orientation",
+                   PropertyType.THREE_DIMENSIONS).update_values(orientation_values)
+    print("orientation-values")
+    print(orientation_values[0])
+    print(orientation_values[1])
+    print(orientation_values[2])
+
 
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""
     print("Exiting...".format(signal_num))
     left_wheel.unsubscribe(GATT_CHARACTERISTIC_ROTATION)
+    left_wheel.unsubscribe(GATT_CHARACTERISTIC_ORIENTATION)
     exit(0)
 
 
@@ -104,6 +116,6 @@ left_wheel = bleAdapter.connect(BLUETOOTH_DEVICE_MAC, address_type=ADDRESS_TYPE)
 
 # Subscribe to the GATT services
 left_wheel.subscribe(GATT_CHARACTERISTIC_ROTATION, callback=handle_rotation_data)
-
+left_wheel.subscribe(GATT_CHARACTERISTIC_ORIENTATION, callback=handle_orientation_data)
 # Register our Keyboard handler to exit
 signal.signal(signal.SIGINT, keyboard_interrupt_handler)

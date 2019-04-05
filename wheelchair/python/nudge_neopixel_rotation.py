@@ -67,7 +67,7 @@ def handle_rotation_data(handle, value_bytes):
     print(rotation_values0)
 
     global prev_val
-    if ((prev_val == (rotation_values0 - 1)) and (rotation_values0 % ROTVAL) == 0):
+    if (prev_val == (rotation_values0 - 1)):
         print("1 ON ")
         ser.write('1'.encode())
         prev_val = rotation_values0

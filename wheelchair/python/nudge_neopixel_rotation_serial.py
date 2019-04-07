@@ -130,24 +130,25 @@ def serial_to_property_values():
     line_bytes = ser.readline()
     # If the line is not empty
     if len(line_bytes) > 0:
-       print("serial data found")
-       line = line_bytes.decode('utf-8')
-       # Split the string using commas as separator, we get a list of strings
-       serialvalues = line.split(',')
+        print("serial data found")
+        line = line_bytes.decode('utf-8')
+        # Split the string using commas as separator, we get a list of strings
+        serialvalues = line.split(',')
 
-       try:
+        try:
             # Use the first element of the list as property id
             # property_serial_id = values.pop(0)
             # Get the property from the thing
-            find_or_create("frame-orientation-b6c8", PropertyType.THREE_DIMENSIONS).update_values([float(x) for x in serialvalues])
+            find_or_create("frame-orientation-b6c8",
+                           PropertyType.THREE_DIMENSIONS).update_values([float(x) for x in serialvalues])
 
-       except:
+        except:
             print('Could not parse: ' + line)
 
 
-def start_serial():
-    while True:
-        serial_to_property_values()
+# def start_serial():
+#     while True:
+#         serial_to_property_values()
 
 
         # Convert the bytes into string

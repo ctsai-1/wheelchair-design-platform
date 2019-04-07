@@ -75,7 +75,7 @@ def handle_rotation_data(handle, value_bytes):
         print("1 ON ")
         ser.write('1'.encode())
     else:
-        print("0 OFF ")
+        print(" OFF ")
         #ser.write('0'.encode())
     prev_val = num_rot
     print(prev_val)
@@ -85,7 +85,9 @@ def handle_rotation_data(handle, value_bytes):
 #        print("after nudge %s" % str(vib))
     #if ((num_rot * 1.916) > 6):
     if (prev_num_rot == (num_rot-5)):
+        print("0000000 sent")
         ser.write('0'.encode())
+        prev_num_rot = num_rot
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""

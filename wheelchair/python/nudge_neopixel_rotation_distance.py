@@ -60,7 +60,7 @@ def handle_rotation_data(handle, value_bytes):
     distance = (rotation_values[0] * 1.916)
     print("float data collected")
     find_or_create("Left Wheel Rotation",
-                   PropertyType.TWO_DIMENSIONS).update_values(distance)
+                   PropertyType.ONE_DIMENSIONS).update_values(distance)
     print("values sent to the hub")
     print(rotation_values[0])
     # print(rotation_values[1])

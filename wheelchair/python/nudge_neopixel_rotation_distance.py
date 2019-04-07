@@ -84,7 +84,7 @@ def handle_rotation_data(handle, value_bytes):
 #        print("after nudge %s" % str(vib))
     distance = (rotation_values[0] * 1.916)
     find_or_create("Left Wheel Distance",
-                   PropertyType.ONE_DIMENSIONS).update_values(distance)
+                   PropertyType.ONE_DIMENSION).update_values(distance)
     print(distance)
 
 def keyboard_interrupt_handler(signal_num):

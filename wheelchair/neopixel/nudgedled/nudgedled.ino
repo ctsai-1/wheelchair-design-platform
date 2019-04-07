@@ -29,7 +29,7 @@ void setup() {
   Serial.begin(9600);
 
   strip.begin();
-  strip.setBrightness(30); //adjust brightness here
+  strip.setBrightness(50); //adjust brightness here
   strip.show(); // Initialize all pixels to 'off'
 }
 
@@ -58,10 +58,28 @@ void loop() {
   }
 
   if (led_enabled = true) {
-    strip.setPixelColor(i, 0, 0, 255);
+    strip.setPixelColor(i+2, 0, 0, 255);
     strip.show();
     delay(10);
     led_enabled = false;
   }
+
+  if (command == '0' /*& =! prevcommand*/) {
+    colorWipe(strip.Color(0, 0, 255), 50); // blue
+    delay(10);
+    for(i=8; i<16; i++) {
+      strip.setPixelColor(i,0,255,0); //green
+    }
+    strip.show();
+    delay(10);
+  }
  // delay(50);
+}
+
+void colorWipe(uint32_t c, uint8_t wait) {
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+      strip.setPixelColor(i, c);
+      strip.show();
+      delay(wait);
+  }
 }

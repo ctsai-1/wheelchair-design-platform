@@ -31,6 +31,13 @@ ser = serial.Serial(
     baudrate = 9600,
     timeout = 2)
 
+def find_or_create(property_name, property):
+    """Search a property by name, create it if not found, then return it."""
+    if my_thing.find_property_by_name(property_name) is None:
+        my_thing.create_property(name=property_name,
+                                 property=property)
+    return my_thing.find_property_by_name(property_name)
+
 # Read the next line from the serial port
 # and update the property values
 def serial_to_property_values():
@@ -38,22 +45,22 @@ def serial_to_property_values():
     line_bytes = ser.readline()
     # If the line is not empty
     if len(line_bytes) > 0:
-        # Convert the bytes into string
+        print("serial data found")
         line = line_bytes.decode('utf-8')
         # Split the string using commas as separator, we get a list of strings
-        values = line.split(',')
+        serialvalues = line.split(',')
 
-        # Use the first element of the list as property id
-        property_id = "frame_orientation_3888"
-        # Get the property from the thing
-        prop = my_thing.properties["frame_orientation_3888"]
-        # If we find the property, we update the values (rest of the list)
-        if prop is not None:
-           prop.update_values([float(x) for x in values])
-        # Otherwise, we show a warning
-        else:
-             print('Warning: unknown property ' + property_id)
+        try:
+            # Use the first element of the list as property id
+            # property_serial_id = values.pop(0)
+            # Get the property from the thing
+            find_or_create("frame-orientation-b6c8",
+                           PropertyType.THREE_DIMENSIONS).update_values([float(x) for x in serialvalues])
 
+        except:
+            print('Could not parse: ' + line)
+    else:
+        print("UNCAZZO")
 # Finally, we call this method again
     serial_to_property_values()
 

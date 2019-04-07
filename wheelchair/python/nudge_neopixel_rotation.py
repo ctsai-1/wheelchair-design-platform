@@ -83,6 +83,9 @@ def handle_rotation_data(handle, value_bytes):
 #        vib = True
 #        print("after nudge %s" % str(vib))
 
+    find_or_create("Left Wheel distance",
+                   PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
+
     distance = (rotation_values[0] * 1.916)
     print("distance")
     print(distance)

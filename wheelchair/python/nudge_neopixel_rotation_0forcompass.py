@@ -79,7 +79,7 @@ def handle_rotation_data(handle, value_bytes):
         #ser.write('0'.encode())
     prev_val = num_rot
     print(prev_val)
-    
+
 #        global vib
 #        print("not vib yet %s" % str(vib))
 #        vib = True
@@ -91,8 +91,8 @@ def handle_rotation_data(handle, value_bytes):
         ser.write('0'.encode())
         #prev_num_rot = num_rot
 
-    prev_val = num_rot
-    print(prev_val)
+    #prev_val = num_rot
+    #print(prev_val)
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""

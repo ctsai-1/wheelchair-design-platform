@@ -62,7 +62,7 @@ def handle_rotation_data(handle, value_bytes):
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
     print("values sent to the hub")
     print(rotation_values[0])
-    print(rotation_values[1])
+    # print(rotation_values[1])
 
     rotation_values0 = math.floor(rotation_values[0])
     print(rotation_values0)

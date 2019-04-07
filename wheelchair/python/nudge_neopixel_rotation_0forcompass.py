@@ -77,6 +77,7 @@ def handle_rotation_data(handle, value_bytes):
     else:
         print(" OFF ")
         print(num_rot % 10)
+        print(prev_val-num_rot)
         #ser.write('0'.encode())
     prev_val = num_rot
     print(prev_val)

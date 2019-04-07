@@ -9,7 +9,6 @@ import pygatt  # To access BLE GATT support
 import signal  # To catch the Ctrl+C and end the program properly
 import os  # To access environment variables
 from dotenv import load_dotenv  # To load environment variables from .env file
-from random import random
 import serial
 import time
 import math
@@ -63,27 +62,31 @@ def handle_rotation_data(handle, value_bytes):
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
     print("values sent to the hub")
     print(rotation_values[0])
-    #print(rotation_values[1])
+    # print(rotation_values[1])
 
-    rotation_values0 = math.floor(rotation_values[0])
-    print(rotation_values0)
+    # rotation_values0 = math.floor(rotation_values[0])
+    # print(rotation_values0)
 
 
-    global prev_val
-    print(prev_val)
-    if (prev_val == (rotation_values0 - 1)):
-        print("1 ON ")
-        ser.write('1'.encode())
-    else:
-        print("0 OFF ")
+    # global prev_val
+    # print(prev_val)
+    # if (prev_val == (rotation_values0 - 1)):
+        # print("1 ON ")
+        # ser.write('1'.encode())
+    # else:
+        # print("0 OFF ")
         #ser.write('0'.encode())
-    prev_val = rotation_values0
-    print(prev_val)
+    #prev_val = rotation_values0
+    # print(prev_val)
 #        global vib
 #        print("not vib yet %s" % str(vib))
 #        vib = True
 #        print("after nudge %s" % str(vib))
+    distance = (rotation_values[0] * 1.916)
 
+    find_or_create("left-wheel-distance-756e",
+               PropertyType.ONE_DIMENSION).update_values(distance)
+    print(distance)
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""
@@ -108,66 +111,3 @@ left_wheel.subscribe(GATT_CHARACTERISTIC_ROTATION, callback=handle_rotation_data
 
 # Register our Keyboard handler to exit
 signal.signal(signal.SIGINT, keyboard_interrupt_handler)
-
-
-def discover_characteristic(device):
-    """List characteristics of a device"""
-    for uuid in device.discover_characteristics().keys():
-        try:
-            print("Read UUID" + str(uuid) + "   " + str(device.char_read(uuid)))
-        except:
-            print("Something wrong with " + str(uuid))
-
-def read_characteristic(device, characteristic_id):
-    """Read a characteristic"""
-    return device.char_read(characteristic_id)
-
-
-# Read the next line from the serial port
-# and update the property values
-def serial_to_property_values():
-    # Read one line
-    line_bytes = ser.readline()
-    # If the line is not empty
-    if len(line_bytes) > 0:
-       print("serial data found")
-       line = line_bytes.decode('utf-8')
-       # Split the string using commas as separator, we get a list of strings
-       serialvalues = line.split(',')
-
-       try:
-            # Use the first element of the list as property id
-            # property_serial_id = values.pop(0)
-            # Get the property from the thing
-            find_or_create("frame-orientation-b6c8", PropertyType.THREE_DIMENSIONS).update_values([float(x) for x in serialvalues])
-
-       except:
-            print('Could not parse: ' + line)
-
-
-def start_serial():
-    while True:
-        serial_to_property_values()
-
-
-        # Convert the bytes into string
-        #line = line_bytes.decode('utf-8')
-        # Split the string using commas as separator, we get a list of strings
-
-
-#         values = line.split(',')
-#         # Use the first element of the list as property id
-#         property_id = values.pop(0)
-#         # Get the property from the thing
-#         prop = my_thing.properties[property_id]
-#         # If we find the property, we update the values (rest of the list)
-#         if prop is not None:
-#             prop.update_values([float(x) for x in values])
-#         # Otherwise, we show a warning
-#         else:
-#             print('Warning: unknown property ' + property_id)
-#     # Finally, we call this method again
-#     serial_to_property_values()
-#
-#
-# serial_to_property_values()

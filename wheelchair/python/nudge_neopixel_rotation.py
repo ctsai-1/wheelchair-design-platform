@@ -62,27 +62,26 @@ def handle_rotation_data(handle, value_bytes):
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
     print("values sent to the hub")
     print(rotation_values[0])
-    #print(rotation_values[1])
+    # print(rotation_values[1])
 
-    rotation_values0 = math.floor(rotation_values[0])
-    print(rotation_values0)
+    num_rot = math.floor(rotation_values[0])
+    print(num_rot)
 
 
     global prev_val
     print(prev_val)
-    if (prev_val == (rotation_values0 - 1)):
+    if (prev_val == (num_rot - 1)):
         print("1 ON ")
         ser.write('1'.encode())
     else:
         print("0 OFF ")
         #ser.write('0'.encode())
-    prev_val = rotation_values0
+    prev_val = num_rot
     print(prev_val)
 #        global vib
 #        print("not vib yet %s" % str(vib))
 #        vib = True
 #        print("after nudge %s" % str(vib))
-
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""

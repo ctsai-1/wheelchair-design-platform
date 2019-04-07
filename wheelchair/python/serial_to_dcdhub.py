@@ -48,11 +48,13 @@ def serial_to_property_values():
         except UnicodeDecodeError:
             line = "0,0,0,0,0,0,0,0,0,0,0,0"
         # Split the string using commas as separator, we get a list of strings
-        str_values = line.split(',')
+        # str_values = line.split(',')
         # Remove the first id
-        str_values.pop(0)
+        # str_values.pop(0)
         # Transform the array of string values into float values (numbers)
-        values = [float(x) for x in str_values]
+        # values = [float(x) for x in str_values]
+
+        values = [float(x) for x in line_bytes.decode('utf-8').split(",")]
 
         # Update values of data and label properties (send them to the DCD Hub)
         # With the same timestamp, so we can easily connect label and raw data later
@@ -63,4 +65,4 @@ def serial_to_property_values():
     # Finally, we call this method again
     serial_to_property_values()
 
-serial_to_property_values()
+#serial_to_property_values()

@@ -84,32 +84,6 @@ def handle_rotation_data(handle, value_bytes):
 #        vib = True
 #        print("after nudge %s" % str(vib))
 
-
-def keyboard_interrupt_handler(signal_num):
-    """Make sure we close our program properly"""
-    print("Exiting...".format(signal_num))
-    left_wheel.unsubscribe(GATT_CHARACTERISTIC_ROTATION)
-    exit(0)
-
-
-# Instantiate a thing with its credential, then read its properties from the DCD Hub
-my_thing = Thing(thing_id=THING_ID, token=THING_TOKEN)
-my_thing.read()
-
-# Start a BLE adapter
-bleAdapter = pygatt.GATTToolBackend()
-bleAdapter.start()
-
-# Use the BLE adapter to connect to our device
-left_wheel = bleAdapter.connect(BLUETOOTH_DEVICE_MAC, address_type=ADDRESS_TYPE)
-
-# Subscribe to the GATT services
-left_wheel.subscribe(GATT_CHARACTERISTIC_ROTATION, callback=handle_rotation_data)
-
-# Register our Keyboard handler to exit
-signal.signal(signal.SIGINT, keyboard_interrupt_handler)
-
-
 def discover_characteristic(device):
     """List characteristics of a device"""
     for uuid in device.discover_characteristics().keys():
@@ -151,7 +125,29 @@ def serial_to_property_values():
         except:
             print('Could not parse: ' + line)
 
+def keyboard_interrupt_handler(signal_num):
+    """Make sure we close our program properly"""
+    print("Exiting...".format(signal_num))
+    left_wheel.unsubscribe(GATT_CHARACTERISTIC_ROTATION)
+    exit(0)
 
+
+# Instantiate a thing with its credential, then read its properties from the DCD Hub
+my_thing = Thing(thing_id=THING_ID, token=THING_TOKEN)
+my_thing.read()
+
+# Start a BLE adapter
+bleAdapter = pygatt.GATTToolBackend()
+bleAdapter.start()
+
+# Use the BLE adapter to connect to our device
+left_wheel = bleAdapter.connect(BLUETOOTH_DEVICE_MAC, address_type=ADDRESS_TYPE)
+
+# Subscribe to the GATT services
+left_wheel.subscribe(GATT_CHARACTERISTIC_ROTATION, callback=handle_rotation_data)
+
+# Register our Keyboard handler to exit
+signal.signal(signal.SIGINT, keyboard_interrupt_handler)
 # def start_serial():
 #     while True:
 #         serial_to_property_values()

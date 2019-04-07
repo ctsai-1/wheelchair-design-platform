@@ -64,27 +64,29 @@ def handle_rotation_data(handle, value_bytes):
     print(rotation_values[0])
     # print(rotation_values[1])
 
-    rotation_values0 = math.floor(rotation_values[0])
-    print(rotation_values0)
+    # rotation_values0 = math.floor(rotation_values[0])
+    # print(rotation_values0)
 
 
-    global prev_val
-    print(prev_val)
-    if (prev_val == (rotation_values0 - 1)):
-        print("1 ON ")
-        ser.write('1'.encode())
-    else:
-        print("0 OFF ")
+    # global prev_val
+    # print(prev_val)
+    # if (prev_val == (rotation_values0 - 1)):
+        # print("1 ON ")
+        # ser.write('1'.encode())
+    # else:
+        # print("0 OFF ")
         #ser.write('0'.encode())
-    prev_val = rotation_values0
-    print(prev_val)
+    #prev_val = rotation_values0
+    #print(prev_val)
 #        global vib
 #        print("not vib yet %s" % str(vib))
 #        vib = True
 #        print("after nudge %s" % str(vib))
 
-    find_or_create("Left Wheel Distance",
-                   PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
+
+
+    # find_or_create("Left Wheel Distance",
+                  # PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
     distance = (rotation_values[0] * 1.916)
     print(distance)
 

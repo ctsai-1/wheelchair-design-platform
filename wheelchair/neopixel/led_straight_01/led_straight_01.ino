@@ -72,7 +72,7 @@ void loop() {
   }
 
   if (command == '0' /*& =! prevcommand*/) {
-    led_path = false;
+    led_path != true;
     strip.setPixelColor(i, 0, 0, 0);
     strip.clear();
     colorWipe(strip.Color(0, 255, 0), 60); // green

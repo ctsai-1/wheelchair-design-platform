@@ -83,6 +83,9 @@ def handle_rotation_data(handle, value_bytes):
 #        vib = True
 #        print("after nudge %s" % str(vib))
 
+    distance = (rotation_values0 * 1.916)
+    print("distance")
+    print(distance)
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""

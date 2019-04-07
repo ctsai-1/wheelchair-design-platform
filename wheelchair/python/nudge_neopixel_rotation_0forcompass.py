@@ -77,7 +77,6 @@ def handle_rotation_data(handle, value_bytes):
     else:
         print(" OFF ")
         print(num_rot % 10)
-        print(prev_val-(num_rot+9))
         #ser.write('0'.encode())
     prev_val = num_rot
     print(prev_val)
@@ -88,7 +87,7 @@ def handle_rotation_data(handle, value_bytes):
 #        print("after nudge %s" % str(vib))
     #if ((num_rot * 1.916) > 6):
 
-    if ((num_rot % 10) == 0 and (num_rot != 0) and (prev_val != 0)):
+    if ((num_rot % 10) == 0 and (num_rot != prev_val) and (num_rot != 0) and (prev_val != 0)):
         print("0000000 sent")
 
         ser.write('0'.encode())

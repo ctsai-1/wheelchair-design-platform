@@ -62,7 +62,7 @@ def handle_rotation_data(handle, value_bytes):
                    PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
     print("values sent to the hub")
     print(rotation_values[0])
-    #print(rotation_values[1])
+    print(rotation_values[1])
 
     rotation_values0 = math.floor(rotation_values[0])
     print(rotation_values0)
@@ -82,13 +82,6 @@ def handle_rotation_data(handle, value_bytes):
 #        print("not vib yet %s" % str(vib))
 #        vib = True
 #        print("after nudge %s" % str(vib))
-
-    find_or_create("Left Wheel distance",
-                   PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
-
-    distance = (rotation_values[0] * 1.916)
-    print("distance")
-    print(distance)
 
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""

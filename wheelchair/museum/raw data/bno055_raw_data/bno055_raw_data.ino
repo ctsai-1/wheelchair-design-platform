@@ -24,6 +24,9 @@
 // Creating our sensor object to handle the sensor, with initialization 12345
 Adafruit_BNO055 bno = Adafruit_BNO055(12345);
 
+int32_t imuServiceId;
+int32_t orientationCharId;
+
 // Here we create our raw data variables
 imu::Vector<3> euler_vector;            // for reading euler vector values
                                         // (values in Euler angles or 'degrees', from 0..359)
@@ -99,15 +102,13 @@ void loop(void)
   /* Display the floating point data */
   
   
-  Serial.print("frame_orientation-ab9e");
-  Serial.print(",");
+  Serial.print("frame-orientation-b6c8");
+  Serial.print(F(","));
   Serial.print(euler_vector.x());
-  Serial.print(",");
+  Serial.print(F(","));
   Serial.print(euler_vector.y());
-  Serial.print(",");
-  Serial.print(euler_vector.z());
-  Serial.print(",");
-  Serial.println("");
+  Serial.print(F(","));
+  Serial.println(euler_vector.z());
 
   /*delay(50);
 

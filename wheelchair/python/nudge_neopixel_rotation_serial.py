@@ -140,14 +140,15 @@ def serial_to_property_values():
             # property_serial_id = values.pop(0)
             # Get the property from the thing
             find_or_create("frame-orientation-b6c8", PropertyType.THREE_DIMENSIONS).update_values([float(x) for x in serialvalues])
+      
 
        except:
             print('Could not parse: ' + line)
 
 
-def start_serial():
-    while True:
-        serial_to_property_values()
+# def start_serial():
+#     while True:
+#         serial_to_property_values()
 
 
         # Convert the bytes into string

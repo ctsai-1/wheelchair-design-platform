@@ -101,7 +101,7 @@ ser = serial.Serial(
     port=os.environ['SERIAL'],
     baudrate=9600,
     timeout=2)
-
+print("serialON")
 
 # Read the next line from the serial port
 # and update the property values
@@ -124,7 +124,9 @@ def serial_to_property_values():
 
         except:
             print('Could not parse: ' + line)
-
+    else:
+        print("UNCAZZO")
+        
 def keyboard_interrupt_handler(signal_num):
     """Make sure we close our program properly"""
     print("Exiting...".format(signal_num))

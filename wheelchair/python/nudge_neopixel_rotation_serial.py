@@ -123,6 +123,12 @@ def read_characteristic(device, characteristic_id):
     return device.char_read(characteristic_id)
 
 
+ser = serial.Serial(
+    port=os.environ['SERIAL'],
+    baudrate=9600,
+    timeout=2)
+
+
 # Read the next line from the serial port
 # and update the property values
 def serial_to_property_values():

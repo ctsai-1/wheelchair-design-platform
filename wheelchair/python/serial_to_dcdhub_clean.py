@@ -54,7 +54,7 @@ def serial_to_property_values():
             # Use the first element of the list as property id
             # property_serial_id = values.pop(0)
             # Get the property from the thing
-            find_or_create("frame-orientation-b6c8",
+            find_or_create("frame-orientation-3888",
                            PropertyType.THREE_DIMENSIONS).update_values([float(x) for x in serialvalues])
 
         except:

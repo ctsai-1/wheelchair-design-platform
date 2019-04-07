@@ -20,7 +20,8 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(16, PIN, NEO_GRB + NEO_KHZ800);
 // working from around 2 volts (so we start at 2.5v)
 int i;
 //bool led_increase = true;
-bool led_enabled = false;
+bool led_path = false;
+bool led_way = false;
 //int counter = 0;
 int prevcommand = 0;
 
@@ -51,35 +52,45 @@ void loop() {
   char command = Serial.read();
   if (command == '1' /*& =! prevcommand*/) {
     i++;
-    led_enabled = true;
+    led_path = true;
     prevcommand = command;
   } else {
-    led_enabled = false;
+    led_path = false;
   }
 
-  if (led_enabled = true) {
-    strip.setPixelColor(i+2, 0, 0, 255);
+  if (led_path = true) {
+    //j = (i+2);
+    strip.setPixelColor(10, 0, 255, 0);
+    strip.show();
+    strip.setPixelColor(i, 0, 0, 255);
     strip.show();
     delay(10);
-    led_enabled = false;
+    led_path = false;
   }
 
   if (command == '0' /*& =! prevcommand*/) {
-    colorWipe(strip.Color(0, 0, 255), 50); // blue
-    delay(10);
-    for(i=8; i<16; i++) {
-      strip.setPixelColor(i,0,255,0); //green
+    led_way = true;
+  } else {
+    led_way = false;
+  }
+
+  if (led_way = true) {
+    //colorWipe(strip.Color(0, 0, 255), 50); // blue
+    //delay(50);
+    for (i = 10; i < 16; i++) {
+      strip.setPixelColor(i, 0, 255, 0); //green
     }
     strip.show();
-    delay(10);
+    delay(50);
+    led_path = true;
   }
- // delay(50);
+  // delay(50);
 }
 
 void colorWipe(uint32_t c, uint8_t wait) {
-  for(uint16_t i=0; i<strip.numPixels(); i++) {
-      strip.setPixelColor(i, c);
-      strip.show();
-      delay(wait);
+  for (uint16_t i = 0; i < strip.numPixels(); i++) {
+    strip.setPixelColor(i, c);
+    strip.show();
+    delay(wait);
   }
 }

@@ -57,9 +57,10 @@ def handle_rotation_data(handle, value_bytes):
     print("Received data: %s (handle %d)" % (str(value_bytes), handle))
     #rotation_values = [0, 0]
     rotation_values = [float(x) for x in value_bytes.decode('utf-8').split(",")]
+    distance = (rotation_values[0] * 1.916)
     print("float data collected")
     find_or_create("Left Wheel Rotation",
-                   PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
+                   PropertyType.TWO_DIMENSIONS).update_values(distance)
     print("values sent to the hub")
     print(rotation_values[0])
     # print(rotation_values[1])
@@ -87,7 +88,7 @@ def handle_rotation_data(handle, value_bytes):
 
     # find_or_create("Left Wheel Distance",
                   # PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
-    distance = (rotation_values[0] * 1.916)
+    #distance = (rotation_values[0] * 1.916)
     print(distance)
 
 def keyboard_interrupt_handler(signal_num):

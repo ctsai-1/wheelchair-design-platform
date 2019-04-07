@@ -46,7 +46,7 @@ def serial_to_property_values():
             # Use the first element of the list as property id
             property_id = "frame_orientation_3888"
             # Get the property from the thing
-            prop = my_thing.properties[property_id]
+            prop = my_thing.properties["frame_orientation_3888"]
             # If we find the property, we update the values (rest of the list)
             if prop is not None:
                prop.update_values([float(x) for x in values])
@@ -59,7 +59,7 @@ def serial_to_property_values():
 
             property_id = "frame_orientation_3888"
             # Get the property from the thing
-            prop = my_thing.properties[property_id]
+            prop = my_thing.properties["frame_orientation_3888"]
             # If we find the property, we update the values (rest of the list)
             if prop is not None:
                prop.update_values([float(x) for x in values])

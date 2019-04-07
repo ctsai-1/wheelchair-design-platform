@@ -71,7 +71,7 @@ void loop() {
   if (command == '0' /*& =! prevcommand*/) {
     led_way = true;
   } else {
-    led_way = false;
+    led_path = true;
   }
 
   if (led_way = true) {

@@ -88,7 +88,7 @@ def handle_rotation_data(handle, value_bytes):
     #if ((num_rot * 1.916) > 6):
 
     #if ((num_rot % 10) == 0 and (num_rot != 0) and (prev_val != 0)):
-    if ((num_rot % 10) == 0 and prev_val == (num_rot - 1)):    
+    if ((num_rot % 10) == 0 and prev_val != (num_rot - 1)):    
         print("0000000 sent")
 
         ser.write('0'.encode())

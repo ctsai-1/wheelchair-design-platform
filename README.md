@@ -1,7 +1,7 @@
-# The EDU Wheelchair: a connected wheelchair for museum exhibition
+# The EDU Wheelchair:
+# a connected wheelchair for museum exhibition
 
 by Dario Sapienza and Samira Miccolis
-sdf
 
 # project description:
 The EDU wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not.
@@ -37,7 +37,8 @@ workshop materials, code examples and also a compilation of resources to foster
 a prospering research and design community around wheelchair users.
 
 
-![IoT1 Exhibition](/docs/workshops/images/iot1_exhibition.jpg)
+![IoT1 Exhibition](/docs/wheelchair/images/EDUchair1.jpg)
+
 ![IoT1 Exhibition](/docs/workshops/images/iot1_exhibition.jpg)
 
 ## Workshops

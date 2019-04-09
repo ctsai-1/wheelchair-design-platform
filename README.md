@@ -3,11 +3,19 @@
 
 by Dario Sapienza and Samira Miccolis
 
-# project description:
+# concept description:
 The EDU-wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not. As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
 Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
 
+ __**Main functions**__
+ * Tringulate the position of the wheelchair 
+ ![Triangulate the position](/wheelchair/images/triangulate_position.png)
+
+
+# prototype description:
+
 # List of sensors:
+ __**Sensors**__
 * __**BNO055 9axis Abs**__ - Get the orientation of the wheelchair and the rotations of the left wheel.
 *	__**BNO055 9axis Abs**__ - pressure sensor, placed on the back of the chair can recognize relaxed or interested posture
 -	Heart rate sensor can detect the “emotional” reaction of a person to a work of art.

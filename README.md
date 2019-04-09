@@ -1,5 +1,5 @@
 # The EDU Wheelchair:
-# a connected wheelchair for museum exhibition
+### a connected wheelchair for museum exhibition
 
 by Dario Sapienza and Samira Miccolis
 

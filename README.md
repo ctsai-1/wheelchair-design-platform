@@ -76,8 +76,7 @@ get started, you can find some additional resources
 [here are some tips and examples](/docs/resources/documentation.md "Documentation tips and examples").
 
 * [Git manipulation such as Pull Request](/docs/resources/git.md "Git manipulation").
-<<<<<<< HEAD
-=======
+
 ## Prototype description
 
 

@@ -78,13 +78,19 @@ get started, you can find some additional resources
 [here are some tips and examples](/docs/resources/documentation.md "Documentation tips and examples").
 
 * [Git manipulation such as Pull Request](/docs/resources/git.md "Git manipulation").
+<<<<<<< HEAD
+=======
+## Prototype description
+>>>>>>> bf5e165161bda46a56d2f938d117f31a89c47a7b
+
+The working prototype is an iterative step towards the final concept.
+To reach the complexity of working with advanced components, like the beacons, earlier experimentation were conducted.
+The IMU 9 axixs absolute sensor was used to perform motion traking of the wheelchair within a preset path. In a first attempt the linear acceleration detected by the sensor placed on the wheelchair’s frame was used to calculate the distance.
+Due to the instability of the outcome value, the sensor was moved to the right wheel and connected to a feather. This allows to detects rotations and send them via BLE to the Rasperry on the frame. Being more reliable, the data collected in this way can be used to display the motion on a neopixel placed on the armsert of the wheelchair.
 
 ## Main Components
 
-__**Disclaimer:**__ the design of this platform focuses on flexibility and
-technology exploration rather than optimisation.
-
-The main design includes a Raspberry Pi 3 and an Arduino Mega 2560 on the wheelchair frame.
+# The main design includes a Raspberry Pi 3 and an Arduino Mega 2560 on the wheelchair frame.
 
 The Arduino Mega is the micro-controller of the platform. Fixed on the main frame of the wheelchair,
 it can collect data from sensors (e.g. force sensors, accelerometers), and trigger actions from actuators

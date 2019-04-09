@@ -3,18 +3,11 @@
 
 by Dario Sapienza and Samira Miccolis
 
-<<<<<<< HEAD
-# project description:
-The EDU wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not.
-As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
-Each wheelchair is equipped with heart rate sensor to detect the mood state of the visitor throughout the visiting experience and pressure sensors on the back of the chair to register when the visitor is bored or interested to the exhibition contents.
-The data collected by the devices, will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
-=======
 # concept description:
 The EDU-wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not. As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
 Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
 
- __**Main functions**__
+ __**Main functions of the concept**__
  * Triangulate the position of the wheelchair through BLE connection (beacons) installed inside the museum.
 
  ![Triangulate the position](/wheelchair/images/triangulateposition.png)
@@ -28,13 +21,15 @@ Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the posit
  ![Triangulate the position](/wheelchair/images/pressuresensor.png)
 
 # prototype description:
->>>>>>> e56c1318f8be4d8997c40bcaa1cb9a36e6140a24
 
 # List of sensors:
--	GPS sensor (beacon for indoor use) tracks the position of the user in the space
--	Gyroscope knows the orientation of the wheelchair
--	(2) pressure sensor, placed on the back of the chair can recognize relaxed or interested posture
--	Heart rate sensor can detect the “emotional” reaction of a person to a work of art.
+ __**Sensors**__
+* __**BNO055 9axis Abs**__ - Gets the orientation of the wheelchair and the rotations of the left wheel.
+* __**Force sensing resistor (FSR)**__ - Monitor the reaction of user in front of the artwork by sensing the force applied on the back of the wheelchair.
+
+ __**Actuators**__
+* __**Speakers**__ - Plays an audio tour according to the position of the user in the exhibition.
+
 - Proximity sensor can detect when the wheelchair is too close to an obstacle, like an artiwork, preventing damages
 - Clock sensor to register how much time a visitor spends in front of a specific artwork and in general inside the museum
 #List of actuators:
@@ -83,7 +78,6 @@ get started, you can find some additional resources
 [here are some tips and examples](/docs/resources/documentation.md "Documentation tips and examples").
 
 * [Git manipulation such as Pull Request](/docs/resources/git.md "Git manipulation").
-## Prototype
 
 ## Main Components
 

@@ -8,8 +8,8 @@ The EDU-wheelchair is a connected wheelchair specifically designed for museum co
 Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
 
  __**Main functions**__
- * Tringulate the position of the wheelchair 
- ![Triangulate the position](/wheelchair/images/triangulate_position.png)
+ * Tringulate the position of the wheelchair
+ ![Triangulate the position](/wheelchair/images/triangulate position.png)
 
 
 # prototype description:

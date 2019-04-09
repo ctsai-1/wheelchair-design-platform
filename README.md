@@ -37,7 +37,7 @@ workshop materials, code examples and also a compilation of resources to foster
 a prospering research and design community around wheelchair users.
 
 
-![EDUchair1](/docs/wheelchair/images/EDUchair1.jpg)
+![EDUchair1](/wheelchair/images/EDUchair1.jpg)
 
 ![IoT1 Exhibition](/docs/workshops/images/iot1_exhibition.jpg)
 

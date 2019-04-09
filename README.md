@@ -3,11 +3,32 @@
 
 by Dario Sapienza and Samira Miccolis
 
+<<<<<<< HEAD
 # project description:
 The EDU wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not.
 As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
 Each wheelchair is equipped with heart rate sensor to detect the mood state of the visitor throughout the visiting experience and pressure sensors on the back of the chair to register when the visitor is bored or interested to the exhibition contents.
 The data collected by the devices, will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
+=======
+# concept description:
+The EDU-wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not. As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
+Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
+
+ __**Main functions**__
+ * Triangulate the position of the wheelchair through BLE connection (beacons) installed inside the museum.
+
+ ![Triangulate the position](/wheelchair/images/triangulateposition.png)
+
+* Guide the visitors with a smart compass and give information via audio.
+
+ ![Triangulate the position](/wheelchair/images/smartcompass.png)
+
+* Detect the reaction of the users in front of an artwork by detecting the posture on the wheelchair.
+
+ ![Triangulate the position](/wheelchair/images/pressuresensor.png)
+
+# prototype description:
+>>>>>>> e56c1318f8be4d8997c40bcaa1cb9a36e6140a24
 
 # List of sensors:
 -	GPS sensor (beacon for indoor use) tracks the position of the user in the space

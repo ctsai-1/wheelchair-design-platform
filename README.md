@@ -9,6 +9,7 @@ Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the posit
 
  __**Main functions**__
  * Tringulate the position of the wheelchair
+ 
  ![Triangulate the position](/wheelchair/images/triangulateposition.png)
 
 

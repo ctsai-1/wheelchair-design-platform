@@ -1,6 +1,6 @@
-# The EDU Wheelchair
+# The EDU Wheelchair: a connected wheelchair for museum exhibition
 
-by Dario, Samira and Chung
+by Dario Sapienza and Samira Miccolis
 sdf
 
 # project description:
@@ -37,6 +37,7 @@ workshop materials, code examples and also a compilation of resources to foster
 a prospering research and design community around wheelchair users.
 
 
+![IoT1 Exhibition](/docs/workshops/images/iot1_exhibition.jpg)
 ![IoT1 Exhibition](/docs/workshops/images/iot1_exhibition.jpg)
 
 ## Workshops

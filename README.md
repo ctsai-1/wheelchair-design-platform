@@ -119,8 +119,18 @@ On the armrest:
 
 * 1 Neopixel ring x 16;
 
+
  __**Cloud server**__
 the project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
+## Main Components setup
+This project is based on the contents and dependencies provided with the GitHub repository of the Wheelchair Design Platform:
+<a href="https://github.com/datacentricdesign/wheelchair-design-platform" target="_blank">https://github.com/datacentricdesign/wheelchair-design-platform</a>
+
+In this case a fork of the repository has been used to experiment with changes without affecting the original project. A description of how to fork a repository can be found here: <a href="https://help.github.com/articles/fork-a-repo/" target="_blank">(GitHub Help)</a>
+
+  #### Cloud server    
+  The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
+
 
 1. creates an account, by signing up to this link [DCD hub](https://dwd.tudelft.nl/auth/signin?login_challenge=c84123b9885e483daef1bb1d8c2f8186) with your e-mail address, name and password.
 2. click on my thing button to create your THING and give it name. This will generate a thing id and an access token for your thing.

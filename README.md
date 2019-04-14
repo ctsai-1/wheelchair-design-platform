@@ -128,6 +128,10 @@ This project is based on the contents and dependencies provided with the GitHub 
 
 In this case a fork of the repository has been used to experiment with changes without affecting the original project. A description of how to fork a repository can be found here: <a href="https://help.github.com/articles/fork-a-repo/" target="_blank">(GitHub Help)</a>
 
+Inside the forked repository a new project have been created and cloned to have a local copy on our computers.
+
+The text editor (IDE) used for the project was <a href="https://atom.io/" target="_blank">(Atom)</a>.
+
   #### Cloud server    
   The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
 
@@ -136,7 +140,7 @@ In this case a fork of the repository has been used to experiment with changes w
 2. click on my thing button to create your THING and give it name. This will generate a thing id and an access token for your thing.
 3. Copy and save this information, as they will enble the communication between the hub and the raspberry.
 
- __**Raspberry Pi**__
+#### Raspberry Pi
 
 1. at the root of your project folder, create a .env file and paste the following lines
 
@@ -145,11 +149,19 @@ In this case a fork of the repository has been used to experiment with changes w
 
 2. as the code  
 
-
 extract the SD card fromn the rasperry and create a .env file at the root of boot,
 
+#### Arduino Mega
+1. connect the Arduino Mega to the computer via serial
 
+2. open the Arduino IDE
 
+3. install the following libraries:
+
+    Wire.h, Adafruit_Sensor.h, Adafruit_BNO055.h, utility/imumaths.h, Adafruit_NeoPixel.h
+
+4. in the Arduino IDE, go in the top menu 'Tools > Boards', and select 'Arduino/Genuino Mega or Mega 2560'
+5. check that the right serial port is selected in 'Tools > Boards'
 
 
 

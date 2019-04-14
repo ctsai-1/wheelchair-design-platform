@@ -131,6 +131,7 @@ In this case a fork of the repository has been used to experiment with changes w
 Inside the forked repository a new project have been created and cloned to have a local copy on our computers.
 
 The text editor (IDE) used for the project was <a href="https://atom.io/" target="_blank">(Atom)</a>.
+Use git commands to open to open the codes in your text editor and to manage it while working.
 
   #### Cloud server    
   The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
@@ -161,7 +162,10 @@ extract the SD card fromn the rasperry and create a .env file at the root of boo
     Wire.h, Adafruit_Sensor.h, Adafruit_BNO055.h, utility/imumaths.h, Adafruit_NeoPixel.h
 
 4. in the Arduino IDE, go in the top menu 'Tools > Boards', and select 'Arduino/Genuino Mega or Mega 2560'
-5. check that the right serial port is selected in 'Tools > Boards'
+5. check that the right serial port is selected in 'Tools > Port'
+
+6. flash the Arduino code [(led_straight_01)](/wheelchair\final code\led_straight_01) to the Arduino Mega board
+
 
 
 

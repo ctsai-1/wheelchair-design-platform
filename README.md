@@ -164,7 +164,7 @@ extract the SD card fromn the rasperry and create a .env file at the root of boo
 4. in the Arduino IDE, go in the top menu 'Tools > Boards', and select 'Arduino/Genuino Mega or Mega 2560'
 5. check that the right serial port is selected in 'Tools > Port'
 
-6. flash the Arduino code [(led_straight_01)](/wheelchair\final code\led_straight_01) to the Arduino Mega board
+6. flash the Arduino code [(led_straight_01)](wheelchair\final code\led_straight_01) to the Arduino Mega board
 
 
 

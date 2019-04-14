@@ -3,7 +3,7 @@
 
 by Dario Sapienza and Samira Miccolis
 
-# concept description:
+## concept description:
 The EDU-wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not. As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
 Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
 
@@ -138,15 +138,42 @@ In this case a fork of the repository has been used to experiment with changes w
 
  __**Raspberry Pi**__
 
-1. at the root of your project folder, create a .env file and paste the following lines
+1. set up the laptop-raspberry direct connection by extracting the SD card and creating 2 text files at the root of the boot:
+ * ssh (without any extension) to enable a secure shell protocol
+ * wpa_supplicant.conf containing the following content
 
-       THING_ID = paste here the copied thing ID
-       THING_TOKEN = paste here the copied thing token
+    ```bash
+    country=NL
+    update_config=1
+    ctrl_interface=/var/run/wpa_supplicant
 
-2. as the code  
+    network={
+    ssid="YOUR_NETWORK_SSID"
+    psk="YOUR_NETORK_PASSWORD"
+             }
+    ```
+
+ to connect the raspberry to the network
+
+2. at the root of your project folder, create a .env file and paste the following lines
+
+      ```bash
+      THING_ID = paste here the copied thing ID
+      THING_TOKEN = paste here the copied thing token
+      ```
+3. it would be needed an IP scanner to retrieve the IP address of your rasperry  
+4. after inserting back the SD card and powering the raspberry, open a text editor (for instance, Powershell in case of windows workers) and type the following line, to access your raspberry
+      ```bash
+      ssh pi@ "type here your raspberry IPaddress"
+      ```
+
+5. the project will use the requirements listed in the [requirements file](requirements.txt) containing both dependences for the library written for the Data-Centric Design Hub and dependences for the communication protocol MQTT, used to talk to the hub. Install them, by using pip (a tool that manages packages, used to update any Python library)
+
+      ```bash       
+      python3 -m pip install -r requirements.txt --user
+      ```
 
 
-extract the SD card fromn the rasperry and create a .env file at the root of boot,
 
 
 

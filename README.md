@@ -123,7 +123,12 @@ These is described in the following diagram:
 * 1 Neopixel ring x 16;
 
 ## Main Components setup
-  #### Cloud server
+This project is based on the contents and dependencies provided with the GitHub repository of the Wheelchair Design Platform:
+<a href="https://github.com/datacentricdesign/wheelchair-design-platform" target="_blank">https://github.com/datacentricdesign/wheelchair-design-platform</a>
+
+In this case a fork of the repository has been used to experiment with changes without affecting the original project. A description of how to fork a repository can be found here: <a href="https://help.github.com/articles/fork-a-repo/" target="_blank">(GitHub Help)</a>
+
+  #### Cloud server    
   The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
 
 1. creates an account, by signing up to this link with your e-mail address, name and password.

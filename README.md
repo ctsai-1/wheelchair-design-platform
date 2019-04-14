@@ -3,7 +3,7 @@
 
 by Dario Sapienza and Samira Miccolis
 
-## concept description:
+# concept description:
 The EDU-wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not. As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
 Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
 
@@ -143,43 +143,14 @@ Use git commands to open to open the codes in your text editor and to manage it 
 
 #### Raspberry Pi
 
-1. set up the laptop-raspberry direct connection by extracting the SD card and creating 2 text files at the root of the boot:
- * ssh (without any extension) to enable a secure shell protocol
- * wpa_supplicant.conf containing the following content
+1. at the root of your project folder, create a .env file and paste the following lines
 
-    ```bash
-    country=NL
-    update_config=1
-    ctrl_interface=/var/run/wpa_supplicant
+       THING_ID = paste here the copied thing ID
+       THING_TOKEN = paste here the copied thing token
 
-    network={
-    ssid="YOUR_NETWORK_SSID"
-    psk="YOUR_NETORK_PASSWORD"
-             }
-    ```
+2. as the code  
 
- to connect the raspberry to the network
-
-3. it would be needed an IP scanner to retrieve the IP address of your rasperry  
-4. after inserting back the SD card and powering the raspberry, open a text editor (for instance, Powershell in case of windows workers) and type the following line, to access your raspberry
-      ```bash
-      ssh pi@ "type here your raspberry IPaddress"
-      ```
-
-5. the project will use the requirements listed in the [requirements file](requirements.txt) containing both dependences for the library written for the Data-Centric Design Hub and dependences for the communication protocol MQTT, used to talk to the hub. Install them, by using pip (a tool that manages packages, used to update any Python library)
-
-      ```bash       
-      python3 -m pip install -r requirements.txt --user
-      ```
-
-5. at the root of your project folder, create a .env file and paste the following lines
-
-      ```bash
-      THING_ID = paste here the copied thing ID
-      THING_TOKEN = paste here the copied thing token
-      ```
-
-
+extract the SD card fromn the rasperry and create a .env file at the root of boot,
 
 #### Arduino Mega
 1. connect the Arduino Mega to the computer via serial
@@ -187,18 +158,26 @@ Use git commands to open to open the codes in your text editor and to manage it 
 2. open the Arduino IDE
 
 3. install the following libraries:
-
-    Wire.h, Adafruit_Sensor.h, Adafruit_BNO055.h, utility/imumaths.h, Adafruit_NeoPixel.h
-
+```cpp
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+#include <Adafruit_NeoPixel.h>
+```
 4. in the Arduino IDE, go in the top menu 'Tools > Boards', and select 'Arduino/Genuino Mega or Mega 2560'
+
 5. check that the right serial port is selected in 'Tools > Port'
 
-6. flash the Arduino code <a href="\wheelchair\final code\led_straight_01" target="_blank">(led_straight_01)</a> to the Arduino Mega board
+6. flash the Arduino code <a href="\wheelchair\final code\led_straight_01" target="_blank">(led_straight_01)</a> to the Arduino Mega board.
 
 #### Feather 32u4 Bluefruit LE
 1. connect the Feather 32u4 to the computer via serial
+
 1. setup the board as shown <a href="https://github.com/ctsai-1/wheelchair-design-platform/blob/master/docs/resources/feather.md" target="_blank">(here)</a>
+
 1. install the following library (Bluefruit nRF51), which you can do in Sketch -> Include Library -> Manage Libraries
+
 2. for the project we will also need the following libraries:
 ```cpp
 #include <Arduino.h>
@@ -212,23 +191,23 @@ Use git commands to open to open the codes in your text editor and to manage it 
 #include "Adafruit_BluefruitLE_UART.h"
 #include "BluefruitConfig.h"
 ```
-4. Flash the code <a href="\wheelchair\final code\bno055_gatt_orientation_rotation" target="_blank">(bno055_gatt_orientation_rotation)</a>  
-4. Go back to Python text editor and type the command 'blescan' to scan the bluethoot devices available.
+4. Flash the code <a href="\wheelchair\final code\bno055_gatt_orientation_rotation" target="_blank">(bno055_gatt_orientation_rotation)</a> to the Feather 32u4.
+
+4. Go back to Python text editor and type the command 'blescan' to scan the bluetooth devices available.
 
  ```cpp
 sudo blescan
 ```
-5. Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
+5. From the list of the bluetooth available check your device name, Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
 
  ```bash
 BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
 ```
 
-
-
-
-
-
+## Poster Educhair
+![IOT poster-group 6](wheelchair/images/PosterEduchair.jpg)
+## Video
+[IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891)
 
 ## Contact and Existing projects
 

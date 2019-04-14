@@ -164,9 +164,40 @@ extract the SD card fromn the rasperry and create a .env file at the root of boo
 4. in the Arduino IDE, go in the top menu 'Tools > Boards', and select 'Arduino/Genuino Mega or Mega 2560'
 5. check that the right serial port is selected in 'Tools > Port'
 
-6. flash the Arduino code ![led_straight_01](\wheelchair\final code\led_straight_01) to the Arduino Mega board
+6. flash the Arduino code <a href="\wheelchair\final code\led_straight_01" target="_blank">(led_straight_01)</a> to the Arduino Mega board
 
-<a href="\wheelchair\final code\led_straight_01" target="_blank">(led_straight_01)</a>
+#### Feather 32u4 Bluefruit LE
+1. connect the Feather 32u4 to the computer via serial
+1. setup the board as shown <a href="https://github.com/ctsai-1/wheelchair-design-platform/blob/master/docs/resources/feather.md" target="_blank">(here)</a>
+1. install the following library (Bluefruit nRF51), which you can do in Sketch -> Include Library -> Manage Libraries
+2. for the project we will also need the following libraries:
+```cpp
+#include <Arduino.h>
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+#include "Adafruit_BLE.h"
+#include "Adafruit_BluefruitLE_SPI.h"
+#include "Adafruit_BluefruitLE_UART.h"
+#include "BluefruitConfig.h"
+```
+4. Flash the code <a href="\wheelchair\final code\bno055_gatt_orientation_rotation" target="_blank">(bno055_gatt_orientation_rotation)</a>  
+4. Go back to Python text editor and type the command 'blescan' to scan the bluethoot devices available.
+
+ ```cpp
+sudo blescan
+```
+5. Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
+
+ ```bash
+BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
+```
+
+
+
+
 
 
 

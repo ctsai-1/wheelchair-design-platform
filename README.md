@@ -157,13 +157,38 @@ Use git commands to open to open the codes in your text editor and to manage it 
     psk="YOUR_NETORK_PASSWORD"
              }
     ```
-
  to connect the raspberry to the network
 
 3. it would be needed an IP scanner to retrieve the IP address of your rasperry  
+
 4. after inserting back the SD card and powering the raspberry, open a text editor (for instance, Powershell in case of windows workers) and type the following line, to access your raspberry
+
       ```bash
       ssh pi@ "type here your raspberry IPaddress"
+      ```
+4. if working with github repository set up git and clone your repository using:
+
+      ```bash
+      sudo apt-get install git
+      git clone "link of your repository on github"
+      ```
+5. use the command
+
+      ```bash
+      cd "name of your folder"
+      ```
+to navigate through the folders and at the root of your project folder, create a .env file using the command
+
+      ```bash
+      nano .env
+      ```
+
+      paste the following lines
+
+      ```bash
+      THING_ID = paste here the copied thing ID
+      THING_TOKEN = paste here the copied thing token
+      SERIAL=/dev/ttyAM0
       ```
 
 5. the project will use the requirements listed in the [requirements file](requirements.txt) containing both dependences for the library written for the Data-Centric Design Hub and dependences for the communication protocol MQTT, used to talk to the hub. Install them, by using pip (a tool that manages packages, used to update any Python library)
@@ -172,14 +197,19 @@ Use git commands to open to open the codes in your text editor and to manage it 
       python3 -m pip install -r requirements.txt --user
       ```
 
-5. at the root of your project folder, create a .env file and paste the following lines
+6. type in the following commands to install the bluetooth dependencies which will allow to subscribe to the GATT (Generic ATTribute Profile) service from the Raspberry Pi and upload data collected to the Hub.
 
       ```bash
-      THING_ID = paste here the copied thing ID
-      THING_TOKEN = paste here the copied thing token
+      sudo apt-get install bluez libbluetooth-dev
+
+      sudo pip3 install git+https://github.com/peplin/pygatt
+
+      sudo pip3 install "pygatt[GATTTOOL]"
+
+      sudo pip3 install bluepy
+
+      sudo pip3 install pexpect
       ```
-
-
 
 #### Arduino Mega
 1. connect the Arduino Mega to the computer via serial

@@ -155,12 +155,6 @@ In this case a fork of the repository has been used to experiment with changes w
 
  to connect the raspberry to the network
 
-2. at the root of your project folder, create a .env file and paste the following lines
-
-      ```bash
-      THING_ID = paste here the copied thing ID
-      THING_TOKEN = paste here the copied thing token
-      ```
 3. it would be needed an IP scanner to retrieve the IP address of your rasperry  
 4. after inserting back the SD card and powering the raspberry, open a text editor (for instance, Powershell in case of windows workers) and type the following line, to access your raspberry
       ```bash
@@ -171,6 +165,13 @@ In this case a fork of the repository has been used to experiment with changes w
 
       ```bash       
       python3 -m pip install -r requirements.txt --user
+      ```
+
+5. at the root of your project folder, create a .env file and paste the following lines
+
+      ```bash
+      THING_ID = paste here the copied thing ID
+      THING_TOKEN = paste here the copied thing token
       ```
 
 

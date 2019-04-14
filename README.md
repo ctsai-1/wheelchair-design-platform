@@ -3,12 +3,6 @@
 
 by Dario Sapienza and Samira Miccolis
 
-<<<<<<< HEAD
->>>>>>> e
-
-
-=======
->>>>>>> 1cbc10dfd580e111c1d1570eb2ad658a91eaeda8
 # concept description:
 The EDU-wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not. As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
 Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
@@ -77,15 +71,14 @@ get started, you can find some additional resources
 [here are some tips and examples](/docs/resources/documentation.md "Documentation tips and examples").
 
 * [Git manipulation such as Pull Request](/docs/resources/git.md "Git manipulation").
-<<<<<<< HEAD
-=======
+
 ## Prototype description
->>>>>>> bf5e165161bda46a56d2f938d117f31a89c47a7b
 
 The working prototype is an iterative step towards the final concept.
-To reach the complexity of working with advanced components, like the beacons, earlier experimentation were conducted.
-The IMU 9 axixs absolute sensor was used to perform motion traking of the wheelchair within a preset path. In a first attempt the linear acceleration detected by the sensor placed on the wheelchair’s frame was used to calculate the distance.
-Due to the instability of the outcome value, the sensor was moved to the right wheel and connected to a feather. This allows to detects rotations and send them via BLE to the Rasperry on the frame. Being more reliable, the data collected in this way can be used to display the motion on a neopixel placed on the armsert of the wheelchair.
+Several experimentations were conducted as preparation to work with more complex components such as beacons. The BNO055 9 axis absolute sensor has been used to perform a rough motion traking of the wheelchair within a preset path.
+The first attempt included using the 9 axis absolute sensor, placed on the frame of the wheelchair, to detect the linear acceleration of the wheelchair while moving. This data, together with the length of the movement allows to calculate the distance travelled. This could have been used in the context of a pre-set path to set a threeshold as trigger for the actuators.
+However, the instability of the acceleration values made the outcome calcultion unrealiable.
+Therefore, the sensor was connected to a Feather BLE board and moved to the right wheel. The presence of the feather allows the use of the sensor to detects rotations without the cables constraints and to send the data via BLE to the Rasperry. Being more reliable, this data can be used to display the motion on a neopixel ring placed on the armrest of the wheelchair.
 
 ## Main Components
 
@@ -127,8 +120,44 @@ On the wheel:
 * 1 small breadboard;
 * 1 USB cable A/B (power bank to Arduino Uno).
 
-On the frame:
+On the armrest:
 
 * 1 Neopixel ring x 16;
+
+ __**Cloud server**__
+the project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
+
+1. creates an account, by signing up to this link with your e-mail address, name and password.
+2. click on my thing button to create your THING. this will generate a thing id and an access token for your thing.
+3. Copy and save this information, as they will enble the communication between the hub and the raspberry.
+
+ __**Raspberry Pi**__
+
+1. at the root of your project folder, create a .env file and paste the following lines
+
+THING_ID = os.environ['THING_ID']
+THING_TOKEN = os.environ['THING_TOKEN']
+
+2.
+
+
+extract the SD card fromn the rasperry and create a .env file at the root of boot,
+
+
+
+
+
+
+
+## Contact and Existing projects
+
+* [The hiking wheelchair](https://github.com/cprecioso/wheelchair-design-platform)
+* [The EDU wheelchair](https://github.com/ctsai-1/wheelchair-design-platform)
+* [Weelchair tracking for basketball players](https://github.com/FabianIDE/wheelchair-design-platform)
+* [Disco Wheelchair](https://github.com/MatthijsBrem/wheelchair-design-platform)
+* [Wheelchair Madness 2222](https://github.com/pherkan/wheelchair-design-platform/tree/master/wheelchair)
+* [Who is sitting?](https://github.com/Rosanfoppen/wheelchair-design-platform/tree/master/wheelchair)
+* [Magic Wheelchair](https://github.com/Yuciena/wheelchair-design-platform)
+* [Yoga Wheelchair](https://github.com/artgomad/wheelchair-design-platform)
 
 # Wiring

@@ -79,21 +79,21 @@ get started, you can find some additional resources
 
 ## Prototype description
 
-
 The working prototype is an iterative step towards the final concept.
-To reach the complexity of working with advanced components, like the beacons, earlier experimentation were conducted.
-The IMU 9 axixs absolute sensor was used to perform motion traking of the wheelchair within a preset path. In a first attempt the linear acceleration detected by the sensor placed on the wheelchair’s frame was used to calculate the distance.
-Due to the instability of the outcome value, the sensor was moved to the right wheel and connected to a feather. This allows to detects rotations and send them via BLE to the Rasperry on the frame. Being more reliable, the data collected in this way can be used to display the motion on a neopixel placed on the armsert of the wheelchair.
+Several experimentations were conducted as preparation to work with more complex components such as beacons. The BNO055 9 axis absolute sensor has been used to perform a rough motion traking of the wheelchair within a preset path.
+The first attempt included using the 9 axis absolute sensor, placed on the frame of the wheelchair, to detect the linear acceleration of the wheelchair while moving. This data, together with the length of the movement allows to calculate the distance travelled. This could have been used in the context of a pre-set path to set a threeshold as trigger for the actuators.
+However, the instability of the acceleration values made the outcome calcultion unrealiable.
+Therefore, the sensor was connected to a Feather BLE board and moved to the right wheel. The presence of the feather allows the use of the sensor to detects rotations without the cables constraints and to send the data via BLE to the Rasperry. Being more reliable, this data can be used to display the motion on a neopixel ring placed on the armrest of the wheelchair.
 
 ## Main Components
 
-# The main design includes a Raspberry Pi 3 and an Arduino Mega 2560 on the wheelchair frame.
+The main design includes a Raspberry Pi 3 and an Arduino Mega 2560 on the wheelchair frame.
 
 The Arduino Mega is the micro-controller of the platform. Fixed on the main frame of the wheelchair,
 it can collect data from sensors (e.g. force sensors, accelerometers), and trigger actions from actuators
 (e.g. LEDs, vibration motors).
 
-More on the Arduino Mega can be found [here](/docs/resources/arduino.md "Arduino resources").
+
 
 Raspberry Pi is a small computer. It is also fixed to the main frame of the wheelchair,
 where it can:
@@ -129,6 +129,31 @@ On the wheel:
 * 1 small power bank;
 * 1 small breadboard;
 * 1 USB cable A/B (power bank to Arduino Uno).
+
+
+ __**Cloud server**__
+the project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
+
+1. creates an account, by signing up to this link with your e-mail address, name and password.
+2. click on my thing button to create your THING. this will generate a thing id and an access token for your thing.
+3. Copy and save this information, as they will enble the communication between the hub and the raspberry.
+
+ __**Raspberry Pi**__
+
+1. at the root of your project folder, create a .env file and paste the following lines
+
+THING_ID = os.environ['THING_ID']
+THING_TOKEN = os.environ['THING_TOKEN']
+
+2. 
+
+
+extract the SD card fromn the rasperry and create a .env file at the root of boot,
+
+
+
+
+
 
 
 ## Contact and Existing projects

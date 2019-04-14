@@ -135,8 +135,8 @@ the project is based on a cloud server, where the data collected are uploaded an
 
 1. at the root of your project folder, create a .env file and paste the following lines
 
-THING_ID = os.environ['THING_ID']
-THING_TOKEN = os.environ['THING_TOKEN']
+    THING_ID = os.environ['THING_ID']
+    THING_TOKEN = os.environ['THING_TOKEN']
 
 2.
 

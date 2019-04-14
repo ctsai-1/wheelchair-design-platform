@@ -3,7 +3,11 @@
 
 by Dario Sapienza and Samira Miccolis
 
+<<<<<<< HEAD
 # concept description:
+=======
+## Concept description
+>>>>>>> 23699e21cfa212b427bebcf66f652fd1ab722e22
 The EDU-wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not. As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
 Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
 
@@ -21,8 +25,13 @@ Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the posit
 
  ![Triangulate the position](/wheelchair/images/pressuresensor.png)
 
+<<<<<<< HEAD
 ## List of sensors for the concept:
  __**Sensors**__
+=======
+## List of sensors for the concept
+### Sensors
+>>>>>>> 23699e21cfa212b427bebcf66f652fd1ab722e22
 * __**BNO055 9axis Abs**__ - Gets the orientation of the wheelchair and the rotations of the left wheel.
 * __**Force sensing resistor (FSR)**__ - Monitor the reaction of user in front of the artwork by sensing the force applied on the back of the wheelchair.
 
@@ -93,13 +102,11 @@ These is described in the following diagram:
 
 ![System architecture](/wheelchair/images/systemarchitecture.png)
 
-## Main Components setup
-
 
 
 ## Prototype components
 
-On the frame:
+#### On the frame:
 
 * 1 Raspberry Pi 3B;
 * 1 SD card;
@@ -108,25 +115,26 @@ On the frame:
 * 1 USB cable A/micro (Powerbank to Raspberry Pi);
 * 1 USB cable A/B (Raspberry Pi to Arduino Mega).
 
-On the wheel:
+#### On the wheel:
 
 * 1 Feather (Bluetooth enabled);
 * 1 small power bank;
 * 1 small breadboard;
 * 1 USB cable A/B (power bank to Arduino Uno).
 
-On the armrest:
+#### On the armrest:
 
 * 1 Neopixel ring x 16;
 
- __**Cloud server**__
-the project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
+## Main Components setup
+  #### Cloud server
+  The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
 
 1. creates an account, by signing up to this link [DCD hub](https://dwd.tudelft.nl/auth/signin?login_challenge=c84123b9885e483daef1bb1d8c2f8186) with your e-mail address, name and password.
 2. click on my thing button to create your THING. This will generate a thing id and an access token for your thing.
 3. Copy and save this information, as they will enble the communication between the hub and the raspberry.
 
- __**Raspberry Pi**__
+#### Raspberry Pi
 
 1. at the root of your project folder, create a .env file and paste the following lines
 

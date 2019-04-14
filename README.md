@@ -98,13 +98,11 @@ These is described in the following diagram:
 
 ![System architecture](/wheelchair/images/systemarchitecture.png)
 
-## Main Components setup
-
 
 
 ## Prototype components
 
-On the frame:
+#### On the frame:
 
 * 1 Raspberry Pi 3B;
 * 1 SD card;
@@ -113,25 +111,26 @@ On the frame:
 * 1 USB cable A/micro (Powerbank to Raspberry Pi);
 * 1 USB cable A/B (Raspberry Pi to Arduino Mega).
 
-On the wheel:
+#### On the wheel:
 
 * 1 Feather (Bluetooth enabled);
 * 1 small power bank;
 * 1 small breadboard;
 * 1 USB cable A/B (power bank to Arduino Uno).
 
-On the armrest:
+#### On the armrest:
 
 * 1 Neopixel ring x 16;
 
- __**Cloud server**__
-the project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
+## Main Components setup
+  #### Cloud server
+  The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
 
 1. creates an account, by signing up to this link with your e-mail address, name and password.
 2. click on my thing button to create your THING. this will generate a thing id and an access token for your thing.
 3. Copy and save this information, as they will enble the communication between the hub and the raspberry.
 
- __**Raspberry Pi**__
+#### Raspberry Pi
 
 1. at the root of your project folder, create a .env file and paste the following lines
 

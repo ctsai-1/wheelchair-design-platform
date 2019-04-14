@@ -128,6 +128,11 @@ This project is based on the contents and dependencies provided with the GitHub 
 
 In this case a fork of the repository has been used to experiment with changes without affecting the original project. A description of how to fork a repository can be found here: <a href="https://help.github.com/articles/fork-a-repo/" target="_blank">(GitHub Help)</a>
 
+Inside the forked repository a new project have been created and cloned to have a local copy on our computers.
+
+The text editor (IDE) used for the project was <a href="https://atom.io/" target="_blank">(Atom)</a>.
+Use git commands to open to open the codes in your text editor and to manage it while working.
+
   #### Cloud server    
   The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
 
@@ -136,7 +141,7 @@ In this case a fork of the repository has been used to experiment with changes w
 2. click on my thing button to create your THING and give it name. This will generate a thing id and an access token for your thing.
 3. Copy and save this information, as they will enble the communication between the hub and the raspberry.
 
- __**Raspberry Pi**__
+#### Raspberry Pi
 
 1. set up the laptop-raspberry direct connection by extracting the SD card and creating 2 text files at the root of the boot:
  * ssh (without any extension) to enable a secure shell protocol
@@ -175,6 +180,49 @@ In this case a fork of the repository has been used to experiment with changes w
       ```
 
 
+
+#### Arduino Mega
+1. connect the Arduino Mega to the computer via serial
+
+2. open the Arduino IDE
+
+3. install the following libraries:
+
+    Wire.h, Adafruit_Sensor.h, Adafruit_BNO055.h, utility/imumaths.h, Adafruit_NeoPixel.h
+
+4. in the Arduino IDE, go in the top menu 'Tools > Boards', and select 'Arduino/Genuino Mega or Mega 2560'
+5. check that the right serial port is selected in 'Tools > Port'
+
+6. flash the Arduino code <a href="\wheelchair\final code\led_straight_01" target="_blank">(led_straight_01)</a> to the Arduino Mega board
+
+#### Feather 32u4 Bluefruit LE
+1. connect the Feather 32u4 to the computer via serial
+1. setup the board as shown <a href="https://github.com/ctsai-1/wheelchair-design-platform/blob/master/docs/resources/feather.md" target="_blank">(here)</a>
+1. install the following library (Bluefruit nRF51), which you can do in Sketch -> Include Library -> Manage Libraries
+2. for the project we will also need the following libraries:
+```cpp
+#include <Arduino.h>
+#include <SPI.h>
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BNO055.h>
+#include <utility/imumaths.h>
+#include "Adafruit_BLE.h"
+#include "Adafruit_BluefruitLE_SPI.h"
+#include "Adafruit_BluefruitLE_UART.h"
+#include "BluefruitConfig.h"
+```
+4. Flash the code <a href="\wheelchair\final code\bno055_gatt_orientation_rotation" target="_blank">(bno055_gatt_orientation_rotation)</a>  
+4. Go back to Python text editor and type the command 'blescan' to scan the bluethoot devices available.
+
+ ```cpp
+sudo blescan
+```
+5. Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
+
+ ```bash
+BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
+```
 
 
 

@@ -238,7 +238,7 @@ BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
 
 ## Working prototype
 
-Once all the different components are set up, we can run the python code <a href="wheelchair\final code\nudge_neopixel_rotation_0forcompass" target="_blank">(nudge_neopixel_rotation_0forcompass)</a>.
+Once all the different components are set up, we can run the python code <a href="\wheelchair\final code\nudge_neopixel_rotation_0forcompass" target="_blank">(nudge_neopixel_rotation_0forcompass)</a>.
 
 In this code we are:
 

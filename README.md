@@ -61,7 +61,7 @@ These is described in the following diagram:
 
 ![System architecture](/wheelchair/images/systemarchitecture.png)
 
-## Components and Wiring
+## Components and wiring
 
 On the frame:
 
@@ -76,7 +76,7 @@ On the armrest:
 
 * 1 Neopixel ring x 16;
 
-Wire the elements as shown in the picture below and secure the neopixel on armrest
+The elements are wired as shown in the picture below and the neopixel is secured on armrest
 ![EDUchairframewiring](/wheelchair/images/frameelementswiring.png)
 
 On the wheel:
@@ -86,17 +86,18 @@ On the wheel:
 * 1 small breadboard;
 * 1 USB cable A/B (power bank to Arduino Uno).
 
-Wire the elements as shown in the picture below and secure the breaboard and the powerbank on the wheel spokes.
+The elements are wired as shown in the picture below; the breaboard and the powerbank are secured on the wheel spokes.
+
 ![EDUchairwheelwiring](/wheelchair/images/wheelelementswiring.png)
 
-the picture below shows how the components have been implemented on the different parts of the wheelchair
+The picture below shows how the components have been implemented on the different parts of the wheelchair
 
 ![EDUchair1](/wheelchair/images/EDUchair1.jpg)
 
 ## Main Components setup
 
 #### Working with git
-This project is based on the contents and dependencies provided with the GitHub repository of the Wheelchair Design Platform:
+This project is based on the contents and dependencies provided in the GitHub repository of the Wheelchair Design Platform:
 <a href="https://github.com/datacentricdesign/wheelchair-design-platform" target="_blank">https://github.com/datacentricdesign/wheelchair-design-platform</a>
 
 In this case a fork of the repository has been used to experiment with changes without affecting the original project. A description of how to fork a repository can be found here: <a href="https://help.github.com/articles/fork-a-repo/" target="_blank">(GitHub Help)</a>
@@ -105,12 +106,12 @@ Inside the forked repository a new project have been created and cloned to have 
 
 #### Suggested text editor
 The text editor (IDE) used for the project was <a href="https://atom.io/" target="_blank">(Atom)</a>.
-Use git commands to open to open the codes in your text editor and to manage it while working.
+Use git commands to open the codes in your text editor and to manage it while working.
 
 #### Cloud server
-the project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
+The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
 
-1. creates an account, by signing up to this link [DCD hub](https://dwd.tudelft.nl/auth/signin?login_challenge=c84123b9885e483daef1bb1d8c2f8186) with your e-mail address, name and password.
+1. creates an account by signing up to this link [DCD hub](https://dwd.tudelft.nl/auth/signin?login_challenge=c84123b9885e483daef1bb1d8c2f8186) with your e-mail address, name and password.
 2. click on my thing button to create your THING and give it name. This will generate a thing id and an access token for your thing.
 3. Copy and save this information, as they will enble the communication between the hub and the raspberry.
 
@@ -120,69 +121,71 @@ the project is based on a cloud server, where the data collected are uploaded an
  * ssh (without any extension) to enable a secure shell protocol
  * wpa_supplicant.conf containing the following content
 
-    ```bash
-    country=NL
-    update_config=1
-    ctrl_interface=/var/run/wpa_supplicant
+```bash
+country=NL
+update_config=1
+ctrl_interface=/var/run/wpa_supplicant
 
-    network={
-    ssid="YOUR_NETWORK_SSID"
-    psk="YOUR_NETORK_PASSWORD"
-             }
-    ```
- to connect the raspberry to the network
+network={
+ssid="YOUR_NETWORK_SSID"
+psk="YOUR_NETORK_PASSWORD"
+       }
+```
+  to connect the raspberry to the network
 
-3. it would be needed an IP scanner to retrieve the IP address of your rasperry  
+2. it would be needed an IP scanner to retrieve the IP address of your rasperry  
 
-4. after inserting back the SD card and powering the raspberry, open a text editor (for instance, Powershell in case of windows workers) and type the following line, to access your raspberry
+3. after inserting back the SD card and powering the raspberry, open a text editor (for instance, Powershell in case of windows workers) and type the following line, to access your raspberry
 
-      ```bash
-      ssh pi@ "type here your raspberry IPaddress"
-      ```
+```bash
+ssh pi@ "type here your raspberry IPaddress"
+```
+
 4. if working with github repository set up git and clone your repository using:
 
-      ```bash
-      sudo apt-get install git
-      git clone "link of your repository on github"
-      ```
+```bash
+sudo apt-get install git
+git clone "link of your repository on github"
+```
+
 5. use the command
 
-      ```bash
-      cd "name of your folder"
-      ```
-to navigate through the folders and at the root of your project folder, create a .env file using the command
+```bash
+cd "name of your folder"
+```
+  to navigate through the folders and at the root of your project folder, create a .env file using the command
 
-      ```bash
-      nano .env
-      ```
+```bash
+nano .env
+```
 
-      paste the following lines
+  paste the following lines
 
-      ```bash
-      THING_ID = paste here the copied thing ID
-      THING_TOKEN = paste here the copied thing token
-      SERIAL=/dev/ttyAM0
-      ```
+```bash
+THING_ID = paste here the copied thing ID
+THING_TOKEN = paste here the copied thing token
+SERIAL=/dev/ttyAM0
+```
 
-5. the project will use the requirements listed in the [requirements file](requirements.txt) containing both dependences for the library written for the Data-Centric Design Hub and dependences for the communication protocol MQTT, used to talk to the hub. Install them, by using pip (a tool that manages packages, used to update any Python library)
+6. the project will use the requirements listed in the [requirements file](requirements.txt) containing both dependences for the library written for the Data-Centric Design Hub and dependences for the communication protocol MQTT, used to talk to the hub. Install them, by using pip (a tool that manages packages, used to update any Python library)
 
-      ```bash       
-      python3 -m pip install -r requirements.txt --user
-      ```
+```bash       
+python3 -m pip install -r requirements.txt --user
+```
 
-6. type in the following commands to install the bluetooth dependencies which will allow to subscribe to the GATT (Generic ATTribute Profile) service from the Raspberry Pi and upload data collected to the Hub.
+7. type in the following commands to install the bluetooth dependencies which will allow to subscribe to the GATT (Generic ATTribute Profile) service from the Raspberry Pi and upload data collected to the Hub.
 
-      ```bash
-      sudo apt-get install bluez libbluetooth-dev
+```bash
+sudo apt-get install bluez libbluetooth-dev
 
-      sudo pip3 install git+https://github.com/peplin/pygatt
+sudo pip3 install git+https://github.com/peplin/pygatt
 
-      sudo pip3 install "pygatt[GATTTOOL]"
+sudo pip3 install "pygatt[GATTTOOL]"
 
-      sudo pip3 install bluepy
+sudo pip3 install bluepy
 
-      sudo pip3 install pexpect
-      ```
+sudo pip3 install pexpect
+```
 
 #### Arduino Mega
 1. connect the Arduino Mega to the computer via serial
@@ -223,16 +226,17 @@ to navigate through the folders and at the root of your project folder, create a
 #include "Adafruit_BluefruitLE_UART.h"
 #include "BluefruitConfig.h"
 ```
-4. Flash the code <a href="\wheelchair\final code\bno055_gatt_orientation_rotation" target="_blank">(bno055_gatt_orientation_rotation)</a> to the Feather 32u4.
+5. Flash the code <a href="\wheelchair\final code\bno055_gatt_orientation_rotation" target="_blank">(bno055_gatt_orientation_rotation)</a> to the Feather 32u4.
 
-4. Go back to Python text editor and type the command 'blescan' to scan the bluetooth devices available.
+6. Go back to Python text editor and type the command 'blescan' to scan the bluetooth devices available.
 
- ```cpp
+```bash
 sudo blescan
 ```
-5. From the list of the bluetooth available check your device name, Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
 
- ```bash
+7. From the list of the bluetooth available check your device name, Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
+
+```bash
 BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
 ```
 

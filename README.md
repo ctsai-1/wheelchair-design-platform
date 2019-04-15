@@ -159,11 +159,12 @@ to navigate through the folders and at the root of your project folder, create a
 
       paste the following lines
 
-      ```bash
-      THING_ID = paste here the copied thing ID
-      THING_TOKEN = paste here the copied thing token
-      SERIAL=/dev/ttyAM0
-      ```
+
+  ```bash
+  THING_ID = paste here the copied thing ID
+  THING_TOKEN = paste here the copied thing token
+  SERIAL=/dev/ttyAM0
+  ```
 
 5. the project will use the requirements listed in the [requirements file](requirements.txt) containing both dependences for the library written for the Data-Centric Design Hub and dependences for the communication protocol MQTT, used to talk to the hub. Install them, by using pip (a tool that manages packages, used to update any Python library)
 

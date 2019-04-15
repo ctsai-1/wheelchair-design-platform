@@ -33,29 +33,6 @@ __**Actuators**__
 __**Other**__
 * __**Feather BLE board**__ - Receives the bluetooth low frequency signals from the beacons placed in the museum.
 
-
-## Workshops
-
-* [Getting started](/docs/workshops/GettingStarted.md)
-* [Workshop 1: Building an Internet-Connected Wheelchair](/docs/workshops/Workshop1.md)
-* [Workshop 2: Integrating and Visualising Sensor-Based Data](/docs/workshops/Workshop2.md)
-* [Workshop 3: Developing Algorithms and Controlling Actuators](/docs/workshops/Workshop3.md)
-* [Workshop 4: Developing and Conducting a Data Collection Campaign](/docs/workshops/Workshop4.md)
-* [Workshop 5: Implementing a Machine Learning Pipeline](/docs/workshops/Workshop5.md)
-* [Workshop 6: Developing a Product Analytics Dashboard](/docs/workshops/Workshop6.md)
-
-## Resources
-
-* This platform uses two programming languages, Python on computers and C on
-micro-controllers. While descriptions and examples of code should help you
-get started, you can find some additional resources
-[here](/docs/resources/software.md "Python and C resources").
-
-* Documentation of your project is key,
-[here are some tips and examples](/docs/resources/documentation.md "Documentation tips and examples").
-
-* [Git manipulation such as Pull Request](/docs/resources/git.md "Git manipulation").
-
 ---
 
 ## Prototype description

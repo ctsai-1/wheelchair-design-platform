@@ -307,7 +307,7 @@ The data collected from the BNO055 9 axis sensor are pushed to the DCD hub and c
 
 You can access Grafana <a href="https://dwd.tudelft.nl/grafana/login" target="_blank">(here)</a>
 
-#### Video
+## Video
 [IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891)
 
 ## Poster Educhair

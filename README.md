@@ -63,7 +63,7 @@ get started, you can find some additional resources
 The working prototype is an iterative step towards the final concept.
 Several experimentations were conducted as preparation to work with more complex components such as beacons. The BNO055 9 axis absolute sensor has been used to perform a rough motion traking of the wheelchair within a preset path.
 The first attempt included using the 9 axis absolute sensor, placed on the frame of the wheelchair, to detect the linear acceleration of the wheelchair while moving. This data, together with the length of the movement allows to calculate the distance travelled. This could have been used in the context of a pre-set path to set a threeshold as trigger for the actuators.
-However, the instability of the acceleration values made the outcome calcultion unrealiable.
+However, the instability of the acceleration values made the outcome calculation unrealiable.
 Therefore, the sensor was connected to a Feather BLE board and moved to the right wheel. The presence of the feather allows the use of the sensor to detects rotations without the cables constraints and to send the data via BLE to the Rasperry. Being more reliable, this data can be used to display the motion on a neopixel ring placed on the armrest of the wheelchair.
 
 ## Main Components
@@ -253,10 +253,79 @@ sudo blescan
 BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
 ```
 
+## Working prototype
+
+Once all the different components are set up, we can run the python code <a href="wheelchair\final code\nudge_neopixel_rotation_0forcompass" target="_blank">(nudge_neopixel_rotation_0forcompass)</a>.
+
+In this code we are:
+
+1. defining the GATT characteristic to which subscribe and creating a new property in the dcdhub
+
+```bash
+    GATT_CHARACTERISTIC_ROTATION = "02118733-4455-6677-8899-AABBCCDDEEFF"
+    ADDRESS_TYPE = pygatt.BLEAddressType.random
+
+    def find_or_create(property_name, property):
+        """Search a property by name, create it if not found, then return it."""
+        if my_thing.find_property_by_name(property_name) is None:
+            my_thing.create_property(name=property_name,
+                                     property=property)
+        return my_thing.find_property_by_name(property_name)
+```
+2. receiving the data from the BNO055 9axis Abs which are sent as bites string and decoding them to get a float number to handle
+
+```bash
+def handle_rotation_data(handle, value_bytes):
+    """
+    handle -- integer, characteristic read handle the data was received on
+    value_bytes -- bytearray, the data returned in the notification
+    """
+    print("Received data: %s (handle %d)" % (str(value_bytes), handle))
+    #rotation_values = [0, 0]
+    rotation_values = [float(x) for x in value_bytes.decode('utf-8').split(",")]
+    print("float data collected")
+    find_or_create("Left Wheel Rotation",
+                   PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
+```
+3. turning float values into integer
+
+```bash
+num_rot = math.floor(rotation_values[0])
+```
+4. sending command '1' each rotation trough serial to the Arduino Mega (when the previous rotation value is equal to the actual rotation value minus one)
+
+```bash
+if ((num_rot % 10) != 0 and prev_val == (num_rot - 1)):
+      print("1 ON ")
+      ser.write('1'.encode())
+```
+5. sending the command '0' to the Arduino Mega every 10 rotation (when the total number of rotations divided by 10 has 0 as reminder)
+
+```bash
+if ((num_rot % 10) == 0 and (num_rot != 0) and (prev_val != 0)):
+      print("0000000 sent")
+
+      ser.write('0'.encode())
+```
+
+When the Arduino Mega board reads the command '1' triggers a single led of the Neopixel Ring, one led per rotation.
+
+When receiving the command '0' the Arduino Mega triggers the Neopixel ring to light up 3 green leds on the right part of the Nepixel led. This behaviour communicates to the user in which direction to turn.
+
+The behaviour of the prototype can be seen in the following video [IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891).
+
+The data collected from the BNO055 9 axis sensor are pushed to the DCD hub and can be visualized in Grafana as follows:
+
+![Graph from Graphana](/wheelchair/images/Graph.png)
+
+You can access Grafana <a href="https://dwd.tudelft.nl/grafana/login" target="_blank">(here)</a>
+
+#### Video
+[IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891)
+
 ## Poster Educhair
 ![IOT poster-group 6](wheelchair/images/PosterEduchair.jpg)
-## Video
-[IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891)
+
 
 ## Contact and Existing projects
 

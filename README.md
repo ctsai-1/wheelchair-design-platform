@@ -295,7 +295,7 @@ if ((num_rot % 10) == 0 and (num_rot != 0) and (prev_val != 0)):
       ser.write('0'.encode())
 ```
 
-When the Arduino Mega board reads the command '1' triggers a single led of the Neopixel Ring, one led per rotation.
+When the Arduino Mega board reads the command '1' it triggers a single led of the Neopixel Ring, one led per rotation.
 
 When receiving the command '0' the Arduino Mega triggers the Neopixel ring to light up 3 green leds on the right part of the Nepixel led. This behaviour communicates to the user in which direction to turn.
 

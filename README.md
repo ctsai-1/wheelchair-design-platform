@@ -118,73 +118,74 @@ The project is based on a cloud server, where the data collected are uploaded an
 #### Raspberry Pi
 
 1. set up the laptop-raspberry direct connection by extracting the SD card and creating 2 text files at the root of the boot:
-   * ssh (without any extension) to enable a secure shell protocol
-   * wpa_supplicant.conf containing the following content
+ * ssh (without any extension) to enable a secure shell protocol
+ * wpa_supplicant.conf containing the following content
 
-      ```bash
-      country=NL
-      update_config=1
-      ctrl_interface=/var/run/wpa_supplicant
+```bash
+country=NL
+update_config=1
+ctrl_interface=/var/run/wpa_supplicant
 
-      network={
-      ssid="YOUR_NETWORK_SSID"
-      psk="YOUR_NETORK_PASSWORD"
-               }
-      ```
-    to connect the raspberry to the network
+network={
+ssid="YOUR_NETWORK_SSID"
+psk="YOUR_NETORK_PASSWORD"
+       }
+```
+  to connect the raspberry to the network
 
-3. it would be needed an IP scanner to retrieve the IP address of your rasperry  
+2. it would be needed an IP scanner to retrieve the IP address of your rasperry  
 
-4. after inserting back the SD card and powering the raspberry, open a text editor (for instance, Powershell in case of windows workers) and type the following line, to access your raspberry
+3. after inserting back the SD card and powering the raspberry, open a text editor (for instance, Powershell in case of windows workers) and type the following line, to access your raspberry
 
-      ```bash
-      ssh pi@ "type here your raspberry IPaddress"
-      ```
+```bash
+ssh pi@ "type here your raspberry IPaddress"
+```
+
 4. if working with github repository set up git and clone your repository using:
 
-      ```bash
-      sudo apt-get install git
-      git clone "link of your repository on github"
-      ```
+```bash
+sudo apt-get install git
+git clone "link of your repository on github"
+```
+
 5. use the command
 
-      ```bash
-      cd "name of your folder"
-      ```
-to navigate through the folders and at the root of your project folder, create a .env file using the command
+```bash
+cd "name of your folder"
+```
+  to navigate through the folders and at the root of your project folder, create a .env file using the command
 
-      ```bash
-      nano .env
-      ```
+```bash
+nano .env
+```
 
-paste the following lines
+  paste the following lines
 
+```bash
+THING_ID = paste here the copied thing ID
+THING_TOKEN = paste here the copied thing token
+SERIAL=/dev/ttyAM0
+```
 
-  ```bash
-  THING_ID = paste here the copied thing ID
-  THING_TOKEN = paste here the copied thing token
-  SERIAL=/dev/ttyAM0
-  ```
+6. the project will use the requirements listed in the [requirements file](requirements.txt) containing both dependences for the library written for the Data-Centric Design Hub and dependences for the communication protocol MQTT, used to talk to the hub. Install them, by using pip (a tool that manages packages, used to update any Python library)
 
-5. the project will use the requirements listed in the [requirements file](requirements.txt) containing both dependences for the library written for the Data-Centric Design Hub and dependences for the communication protocol MQTT, used to talk to the hub. Install them, by using pip (a tool that manages packages, used to update any Python library)
+```bash       
+python3 -m pip install -r requirements.txt --user
+```
 
-      ```bash       
-      python3 -m pip install -r requirements.txt --user
-      ```
+7. type in the following commands to install the bluetooth dependencies which will allow to subscribe to the GATT (Generic ATTribute Profile) service from the Raspberry Pi and upload data collected to the Hub.
 
-6. type in the following commands to install the bluetooth dependencies which will allow to subscribe to the GATT (Generic ATTribute Profile) service from the Raspberry Pi and upload data collected to the Hub.
+```bash
+sudo apt-get install bluez libbluetooth-dev
 
-      ```bash
-      sudo apt-get install bluez libbluetooth-dev
+sudo pip3 install git+https://github.com/peplin/pygatt
 
-      sudo pip3 install git+https://github.com/peplin/pygatt
+sudo pip3 install "pygatt[GATTTOOL]"
 
-      sudo pip3 install "pygatt[GATTTOOL]"
+sudo pip3 install bluepy
 
-      sudo pip3 install bluepy
-
-      sudo pip3 install pexpect
-      ```
+sudo pip3 install pexpect
+```
 
 #### Arduino Mega
 1. connect the Arduino Mega to the computer via serial
@@ -229,12 +230,13 @@ paste the following lines
 
 4. Go back to Python text editor and type the command 'blescan' to scan the bluetooth devices available.
 
- ```cpp
+```bash
 sudo blescan
 ```
+
 5. From the list of the bluetooth available check your device name, Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
 
- ```bash
+```bash
 BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
 ```
 

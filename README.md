@@ -5,7 +5,7 @@ by Dario Sapienza and Samira Miccolis
 
 # concept description:
 The EDU-wheelchair is a connected wheelchair specifically designed for museum context in order to enhance the experience of visiting a museum exhibition for everyone, both disabled people and not. As guides do, the connected wheelchair will lead the visitors through the works of art by following different paths, according to visitors’ moods and the museum visitors’ preferences database.
-Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) to the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
+Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the position from beacons located in the museum. A pressure sensor on the back of the chair will register when the visitor is bored (lean back) or interested (lean forward) in the exhibition contents. The data collected by the devices will be used either by the museum to improve the overall visiting experience and by the internal processor to learn about user preferences and adjust the visiting flow.
 
 ## Main functions of the concept
 
@@ -17,20 +17,20 @@ Each wheelchair will be equipped with Bluetooth Low Energy to retrieve the posit
 
  ![Triangulate the position](/wheelchair/images/smartcompass.png)
 
-* Detect the reaction of the users in front of an artwork by detecting the posture on the wheelchair.
+* Detect the reaction of the users in front of an artwork by monitoring the posture on the wheelchair.
 
  ![Triangulate the position](/wheelchair/images/pressuresensor.png)
 
 ## List of sensors for the concept:
  __**Sensors**__
 * __**BNO055 9axis Abs**__ - Gets the orientation of the wheelchair and the rotations of the left wheel.
-* __**Force sensing resistor (FSR)**__ - Monitor the reaction of user in front of the artwork by sensing the force applied on the back of the wheelchair.
+* __**Force sensing resistor (FSR)**__ - Monitors the reaction of user in front of the artwork by sensing the force applied on the back of the wheelchair.
 
- __**Actuators**__
+__**Actuators**__
 * __**Speakers**__ - Plays an audio tour according to the position of the user in the exhibition.
 * __**Neopixel ring x 16**__ - Indicates the distance traveled by the users and shows the direction that they need to follow.
 
- __**Other**__
+__**Other**__
 * __**Feather BLE board**__ - Receives the bluetooth low frequency signals from the beacons placed in the museum.
 
 
@@ -56,12 +56,14 @@ get started, you can find some additional resources
 
 * [Git manipulation such as Pull Request](/docs/resources/git.md "Git manipulation").
 
+---
+
 ## Prototype description
 
 The working prototype is an iterative step towards the final concept.
 Several experimentations were conducted as preparation to work with more complex components such as beacons. The BNO055 9 axis absolute sensor has been used to perform a rough motion traking of the wheelchair within a preset path.
 The first attempt included using the 9 axis absolute sensor, placed on the frame of the wheelchair, to detect the linear acceleration of the wheelchair while moving. This data, together with the length of the movement allows to calculate the distance travelled. This could have been used in the context of a pre-set path to set a threeshold as trigger for the actuators.
-However, the instability of the acceleration values made the outcome calcultion unrealiable.
+However, the instability of the acceleration values made the outcome calculation unrealiable.
 Therefore, the sensor was connected to a Feather BLE board and moved to the right wheel. The presence of the feather allows the use of the sensor to detects rotations without the cables constraints and to send the data via BLE to the Rasperry. Being more reliable, this data can be used to display the motion on a neopixel ring placed on the armrest of the wheelchair.
 
 ## Implemented components
@@ -111,6 +113,7 @@ Wire the elements as shown in the picture below and secure the breaboard and the
 ![EDUchairwheelwiring](/wheelchair/images/wheelelementswiring.png)
 
 the picture below shows how the components have been implemented on the different parts of the wheelchair
+
 ![EDUchair1](/wheelchair/images/EDUchair1.jpg)
 
 ## Main Components setup
@@ -256,10 +259,79 @@ sudo blescan
 BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
 ```
 
+## Working prototype
+
+Once all the different components are set up, we can run the python code <a href="wheelchair\final code\nudge_neopixel_rotation_0forcompass" target="_blank">(nudge_neopixel_rotation_0forcompass)</a>.
+
+In this code we are:
+
+1. defining the GATT characteristic to which subscribe and creating a new property in the dcdhub
+
+```bash
+    GATT_CHARACTERISTIC_ROTATION = "02118733-4455-6677-8899-AABBCCDDEEFF"
+    ADDRESS_TYPE = pygatt.BLEAddressType.random
+
+    def find_or_create(property_name, property):
+        """Search a property by name, create it if not found, then return it."""
+        if my_thing.find_property_by_name(property_name) is None:
+            my_thing.create_property(name=property_name,
+                                     property=property)
+        return my_thing.find_property_by_name(property_name)
+```
+2. receiving the data from the BNO055 9axis Abs which are sent as bites string and decoding them to get a float number to handle
+
+```bash
+def handle_rotation_data(handle, value_bytes):
+    """
+    handle -- integer, characteristic read handle the data was received on
+    value_bytes -- bytearray, the data returned in the notification
+    """
+    print("Received data: %s (handle %d)" % (str(value_bytes), handle))
+    #rotation_values = [0, 0]
+    rotation_values = [float(x) for x in value_bytes.decode('utf-8').split(",")]
+    print("float data collected")
+    find_or_create("Left Wheel Rotation",
+                   PropertyType.TWO_DIMENSIONS).update_values(rotation_values)
+```
+3. turning float values into integer
+
+```bash
+num_rot = math.floor(rotation_values[0])
+```
+4. sending command '1' each rotation trough serial to the Arduino Mega (when the previous rotation value is equal to the actual rotation value minus one)
+
+```bash
+if ((num_rot % 10) != 0 and prev_val == (num_rot - 1)):
+      print("1 ON ")
+      ser.write('1'.encode())
+```
+5. sending the command '0' to the Arduino Mega every 10 rotation (when the total number of rotations divided by 10 has 0 as reminder)
+
+```bash
+if ((num_rot % 10) == 0 and (num_rot != 0) and (prev_val != 0)):
+      print("0000000 sent")
+
+      ser.write('0'.encode())
+```
+
+When the Arduino Mega board reads the command '1' triggers a single led of the Neopixel Ring, one led per rotation.
+
+When receiving the command '0' the Arduino Mega triggers the Neopixel ring to light up 3 green leds on the right part of the Nepixel led. This behaviour communicates to the user in which direction to turn.
+
+The behaviour of the prototype can be seen in the following video [IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891).
+
+The data collected from the BNO055 9 axis sensor are pushed to the DCD hub and can be visualized in Grafana as follows:
+
+![Graph from Graphana](/wheelchair/images/Graph.png)
+
+You can access Grafana <a href="https://dwd.tudelft.nl/grafana/login" target="_blank">(here)</a>
+
+#### Video
+[IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891)
+
 ## Poster Educhair
 ![IOT poster-group 6](wheelchair/images/PosterEduchair.jpg)
-## Video
-[IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891)
+
 
 ## Contact and Existing projects
 

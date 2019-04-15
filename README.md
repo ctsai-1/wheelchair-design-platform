@@ -157,7 +157,7 @@ to navigate through the folders and at the root of your project folder, create a
       nano .env
       ```
 
-      paste the following lines
+paste the following lines
 
 
   ```bash

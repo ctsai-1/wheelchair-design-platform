@@ -97,7 +97,7 @@ The picture below shows how the components have been implemented on the differen
 ## Main Components setup
 
 #### Working with git
-This project is based on the contents and dependencies provided with the GitHub repository of the Wheelchair Design Platform:
+This project is based on the contents and dependencies provided in the GitHub repository of the Wheelchair Design Platform:
 <a href="https://github.com/datacentricdesign/wheelchair-design-platform" target="_blank">https://github.com/datacentricdesign/wheelchair-design-platform</a>
 
 In this case a fork of the repository has been used to experiment with changes without affecting the original project. A description of how to fork a repository can be found here: <a href="https://help.github.com/articles/fork-a-repo/" target="_blank">(GitHub Help)</a>
@@ -106,32 +106,32 @@ Inside the forked repository a new project have been created and cloned to have 
 
 #### Suggested text editor
 The text editor (IDE) used for the project was <a href="https://atom.io/" target="_blank">(Atom)</a>.
-Use git commands to open to open the codes in your text editor and to manage it while working.
+Use git commands to open the codes in your text editor and to manage it while working.
 
 #### Cloud server
-the project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
+The project is based on a cloud server, where the data collected are uploaded and stored. For this purpose the data centric design Hub prototype from Tu Delft has been used.
 
-1. creates an account, by signing up to this link [DCD hub](https://dwd.tudelft.nl/auth/signin?login_challenge=c84123b9885e483daef1bb1d8c2f8186) with your e-mail address, name and password.
+1. creates an account by signing up to this link [DCD hub](https://dwd.tudelft.nl/auth/signin?login_challenge=c84123b9885e483daef1bb1d8c2f8186) with your e-mail address, name and password.
 2. click on my thing button to create your THING and give it name. This will generate a thing id and an access token for your thing.
 3. Copy and save this information, as they will enble the communication between the hub and the raspberry.
 
 #### Raspberry Pi
 
 1. set up the laptop-raspberry direct connection by extracting the SD card and creating 2 text files at the root of the boot:
- * ssh (without any extension) to enable a secure shell protocol
- * wpa_supplicant.conf containing the following content
+   * ssh (without any extension) to enable a secure shell protocol
+   * wpa_supplicant.conf containing the following content
 
-    ```bash
-    country=NL
-    update_config=1
-    ctrl_interface=/var/run/wpa_supplicant
+      ```bash
+      country=NL
+      update_config=1
+      ctrl_interface=/var/run/wpa_supplicant
 
-    network={
-    ssid="YOUR_NETWORK_SSID"
-    psk="YOUR_NETORK_PASSWORD"
-             }
-    ```
- to connect the raspberry to the network
+      network={
+      ssid="YOUR_NETWORK_SSID"
+      psk="YOUR_NETORK_PASSWORD"
+               }
+      ```
+    to connect the raspberry to the network
 
 3. it would be needed an IP scanner to retrieve the IP address of your rasperry  
 

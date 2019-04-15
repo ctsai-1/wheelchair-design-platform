@@ -61,7 +61,7 @@ These is described in the following diagram:
 
 ![System architecture](/wheelchair/images/systemarchitecture.png)
 
-## Components and Wiring
+## Components and wiring
 
 On the frame:
 
@@ -76,7 +76,7 @@ On the armrest:
 
 * 1 Neopixel ring x 16;
 
-Wire the elements as shown in the picture below and secure the neopixel on armrest
+The elements are wired as shown in the picture below and the neopixel is secured on armrest
 ![EDUchairframewiring](/wheelchair/images/frameelementswiring.png)
 
 On the wheel:
@@ -86,10 +86,11 @@ On the wheel:
 * 1 small breadboard;
 * 1 USB cable A/B (power bank to Arduino Uno).
 
-Wire the elements as shown in the picture below and secure the breaboard and the powerbank on the wheel spokes.
+The elements are wired as shown in the picture below; the breaboard and the powerbank are secured on the wheel spokes.
+
 ![EDUchairwheelwiring](/wheelchair/images/wheelelementswiring.png)
 
-the picture below shows how the components have been implemented on the different parts of the wheelchair
+The picture below shows how the components have been implemented on the different parts of the wheelchair
 
 ![EDUchair1](/wheelchair/images/EDUchair1.jpg)
 

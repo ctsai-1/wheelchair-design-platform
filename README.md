@@ -226,15 +226,15 @@ sudo pip3 install pexpect
 #include "Adafruit_BluefruitLE_UART.h"
 #include "BluefruitConfig.h"
 ```
-4. Flash the code <a href="\wheelchair\final code\bno055_gatt_orientation_rotation" target="_blank">(bno055_gatt_orientation_rotation)</a> to the Feather 32u4.
+5. Flash the code <a href="\wheelchair\final code\bno055_gatt_orientation_rotation" target="_blank">(bno055_gatt_orientation_rotation)</a> to the Feather 32u4.
 
-4. Go back to Python text editor and type the command 'blescan' to scan the bluetooth devices available.
+6. Go back to Python text editor and type the command 'blescan' to scan the bluetooth devices available.
 
 ```bash
 sudo blescan
 ```
 
-5. From the list of the bluetooth available check your device name, Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
+7. From the list of the bluetooth available check your device name, Copy the MAC address and paste in your .env file as a new environment variable 'BLUETOOTH_DEVICE_MAC', for example:
 
 ```bash
 BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a

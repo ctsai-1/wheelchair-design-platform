@@ -64,7 +64,7 @@ The first attempt included using the 9 axis absolute sensor, placed on the frame
 However, the instability of the acceleration values made the outcome calcultion unrealiable.
 Therefore, the sensor was connected to a Feather BLE board and moved to the right wheel. The presence of the feather allows the use of the sensor to detects rotations without the cables constraints and to send the data via BLE to the Rasperry. Being more reliable, this data can be used to display the motion on a neopixel ring placed on the armrest of the wheelchair.
 
-## Main Components
+## Implemented components
 
 The main design includes a Raspberry Pi 3, an Arduino Mega 2560 on the wheelchair frame and a Feather BLE board (bluetooth enabled) on the right wheel.
 
@@ -82,7 +82,7 @@ These is described in the following diagram:
 
 ![System architecture](/wheelchair/images/systemarchitecture.png)
 
-## Prototype components
+## Components and Wiring
 
 On the frame:
 
@@ -93,6 +93,13 @@ On the frame:
 * 1 USB cable A/micro (Powerbank to Raspberry Pi);
 * 1 USB cable A/B (Raspberry Pi to Arduino Mega).
 
+On the armrest:
+
+* 1 Neopixel ring x 16;
+
+Wire the elements as shown in the picture below and secure the neopixel on armrest
+![EDUchairframewiring](/wheelchair/images/frameelementswiring.png)
+
 On the wheel:
 
 * 1 Feather (Bluetooth enabled);
@@ -100,9 +107,8 @@ On the wheel:
 * 1 small breadboard;
 * 1 USB cable A/B (power bank to Arduino Uno).
 
-On the armrest:
-
-* 1 Neopixel ring x 16;
+Wire the elements as shown in the picture below and secure the breaboard and the powerbank on the wheel spokes.
+![EDUchairwheelwiring](/wheelchair/images/wheelelementswiring.png)
 
 the picture below shows how the components have been implemented on the different parts of the wheelchair
 ![EDUchair1](/wheelchair/images/EDUchair1.jpg)

@@ -301,18 +301,14 @@ When receiving the command '0' the Arduino Mega triggers the Neopixel ring to li
 
 The behaviour of the prototype can be seen in the following video [IOT video-group 6](https://vimeo.com/330320122).
 
-<a href="https://vimeo.com/330320122" target="_blank">(here)</a>
-
 The data collected from the BNO055 9 axis sensor are pushed to the DCD hub and can be visualized in Grafana as follows:
 
 ![Graph from Graphana](/wheelchair/images/Graph.png)
 
 You can access Grafana <a href="https://dwd.tudelft.nl/grafana/login" target="_blank">(here)</a>
 
-#### Video
-[IOT video-group 6](https://vimeo.com/330320122)
 ## Video
-[IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891)
+[IOT video-group 6](https://vimeo.com/330320122)
 
 ## Poster Educhair
 ![IOT poster-group 6](wheelchair/images/PosterEduchair.jpg)

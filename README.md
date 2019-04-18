@@ -299,7 +299,9 @@ When the Arduino Mega board reads the command '1' triggers a single led of the N
 
 When receiving the command '0' the Arduino Mega triggers the Neopixel ring to light up 3 green leds on the right part of the Nepixel led. This behaviour communicates to the user in which direction to turn.
 
-The behaviour of the prototype can be seen in the following video [IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891).
+The behaviour of the prototype can be seen in the following video [IOT video-group 6](https://vimeo.com/330320122).
+
+<a href="https://vimeo.com/330320122" target="_blank">(here)</a>
 
 The data collected from the BNO055 9 axis sensor are pushed to the DCD hub and can be visualized in Grafana as follows:
 

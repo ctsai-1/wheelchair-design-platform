@@ -242,7 +242,7 @@ BLUETOOTH_DEVICE_MAC=fb:48:5b:84:36:4a
 
 ## Working prototype
 
-Once all the different components are set up, we can run the python code <a href="wheelchair\final code\nudge_neopixel_rotation_0forcompass" target="_blank">(nudge_neopixel_rotation_0forcompass)</a>.
+Once all the different components are set up, we can run the python code <a href="wheelchair\final code\nudge_neopixel_rotation_0forcompass.py" target="_blank">(nudge_neopixel_rotation_0forcompass)</a>.
 
 In this code we are:
 
@@ -295,7 +295,7 @@ if ((num_rot % 10) == 0 and (num_rot != 0) and (prev_val != 0)):
       ser.write('0'.encode())
 ```
 
-When the Arduino Mega board reads the command '1' triggers a single led of the Neopixel Ring, one led per rotation.
+When the Arduino Mega board reads the command '1' it triggers a single led of the Neopixel Ring, one led per rotation.
 
 When receiving the command '0' the Arduino Mega triggers the Neopixel ring to light up 3 green leds on the right part of the Nepixel led. This behaviour communicates to the user in which direction to turn.
 
@@ -311,6 +311,8 @@ You can access Grafana <a href="https://dwd.tudelft.nl/grafana/login" target="_b
 
 #### Video
 [IOT video-group 6](https://vimeo.com/330320122)
+## Video
+[IOT video-group 6](https://vimeo.com/user94548035/review/330320122/44a0cd5891)
 
 ## Poster Educhair
 ![IOT poster-group 6](wheelchair/images/PosterEduchair.jpg)
